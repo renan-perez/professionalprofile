@@ -12,5 +12,6 @@
 hs_err_pid*
 
 .idea/
-professionalprofile-core/professionalprofile-core.iml
+professionalprofile-core/.idea/
 professionalprofile-core/target/
+professionalprofile-core/professionalprofile-core.iml
