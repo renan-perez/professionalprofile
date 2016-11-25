@@ -1,4 +1,4 @@
-package org.org.professionalprofile.bean;
+package org.professionalprofile.core.bean;
 
 import java.io.Serializable;
 import java.math.BigInteger;

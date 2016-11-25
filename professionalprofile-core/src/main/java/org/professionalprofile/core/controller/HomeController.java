@@ -1,6 +1,6 @@
-package org.professioanlprofile.core.controller;
+package org.professionalprofile.core.controller;
 
-import org.org.professionalprofile.bean.Profile;
+import org.professionalprofile.core.bean.Profile;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
