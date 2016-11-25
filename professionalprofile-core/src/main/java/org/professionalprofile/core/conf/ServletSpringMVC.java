@@ -1,10 +1,8 @@
-package org.professionalprofile.core;
+package org.professionalprofile.core.conf;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-/**
- * Created by renan on 24/11/2016.
- */
+
 public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
@@ -13,11 +11,11 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[0];
+        return new Class[]{AppWebConfiguration.class};
     }
 
     @Override
     protected String[] getServletMappings() {
-        return new String[0];
+        return new String[] {"/"};
     }
 }
