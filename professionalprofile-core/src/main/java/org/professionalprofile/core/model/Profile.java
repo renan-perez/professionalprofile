@@ -5,6 +5,21 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Set;
 
+@NamedQueries({
+    @NamedQuery(
+        name = "Profile.getMainProfilel",
+        query = "SELECT p FROM Profile p WHERE p.mainProfile = TRUE"
+    ),
+    @NamedQuery(
+            name = "Profile.getByLanguage",
+            query = "SELECT p FROM Profile p WHERE p.id.language = :language"
+    ),
+    @NamedQuery(
+        name = "Profile.listAvailableProfileLanguages",
+        query = "SELECT p.id.language FROM Profile p"
+    ),
+})
+
 @Entity
 @Table(schema = "renanpe_professionalprofile", name = "profile")
 public class Profile implements Serializable {
@@ -14,6 +29,7 @@ public class Profile implements Serializable {
     private ProfileId id;
     private String professionalHeadline;
     private String industry;
+    private String summary;
     private Boolean mainProfile;
     private Set<Skill> skills;
 
@@ -44,6 +60,15 @@ public class Profile implements Serializable {
         this.industry = industry;
     }
 
+    @Lob
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
     @Column(nullable = false)
     public Boolean isMainProfile() {
         return mainProfile;
@@ -54,13 +79,13 @@ public class Profile implements Serializable {
     }
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "profile_has_skills", joinColumns = {
-            @JoinColumn(name = "user_id", nullable = false, updatable = false),
-            @JoinColumn(name = "language_id", nullable = false, updatable = false)
-    },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "name", nullable = false, updatable = false)
-            }
+    @JoinTable(
+        name = "profile_has_skills",
+        joinColumns = {
+            @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false, updatable = false),
+            @JoinColumn(name = "language_id", referencedColumnName = "language_id", nullable = false, updatable = false)},
+        inverseJoinColumns = {
+            @JoinColumn(name = "skill_name", nullable = false, updatable = false)}
     )
     public Set<Skill> getSkills() {
         return skills;

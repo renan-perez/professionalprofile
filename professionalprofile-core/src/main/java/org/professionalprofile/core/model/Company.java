@@ -16,7 +16,7 @@ public class Company implements Serializable {
 
     private BigInteger id;
     private String name;
-    private String site;
+    private String website;
     private Image logo;
 
     @Id
@@ -39,12 +39,12 @@ public class Company implements Serializable {
     }
 
     @Column(length = 100, nullable = true)
-    public String getSite() {
-        return site;
+    public String getWebsite() {
+        return website;
     }
 
-    public void setSite(String site) {
-        this.site = site;
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
     @ManyToOne

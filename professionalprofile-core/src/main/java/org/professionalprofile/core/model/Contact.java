@@ -20,6 +20,7 @@ public class Contact implements Serializable {
     private BigInteger id;
     private ContactType type;
     private String contact;
+    private Boolean mainContact;
     private User user;
 
     @Id
@@ -50,6 +51,15 @@ public class Contact implements Serializable {
 
     public void setContact(String contact) {
         this.contact = contact;
+    }
+
+    @Column(nullable = false)
+    public Boolean isMainContact() {
+        return mainContact;
+    }
+
+    public void setMainContact(Boolean mainContact) {
+        this.mainContact = mainContact;
     }
 
     @ManyToOne

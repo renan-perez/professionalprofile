@@ -1,53 +1,49 @@
 package org.professionalprofile.core.dao;
 
+import org.professionalprofile.core.exception.SystemException;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.io.Serializable;
 import java.util.*;
 
-public abstract class GenericDAO<T, ID extends Serializable> implements GenericPersistence<T, ID> {
+public abstract class GenericDAO<T, ID extends Serializable> {
 
     @PersistenceContext
     private EntityManager manager;
 
-    @Override
-    public T save(final T instance) {
+    protected T save(final T instance) throws SystemException {
         manager.persist(instance);
         manager.flush();
         return instance;
     }
 
-    @Override
-    public void delete(T t) {
+    protected void delete(T t) throws SystemException {
         manager.remove(t);
         manager.flush();
     }
 
-    @Override
-    public T get(final Class<T> clazz, final ID id) {
+    protected T get(final Class<T> clazz, final ID id) throws SystemException {
         return manager.find(clazz, id);
     }
 
-    @Override
-    public List<T> list(final Class<T> clazz) {
+    protected List<T> list(final Class<T> clazz) throws SystemException {
         return listByNamedQuery(clazz.getName() + ".list", null, clazz);
     }
 
-    @Override
-    public List<T> listByNamedQuery(final String namedQuery, final Map<String, Object> paramValue, final Class<T> clazz) {
-        return createQuery(namedQuery, paramValue, clazz).getResultList();
+    protected List<T> listByNamedQuery(final String namedQuery, final Map<String, Object> paramValueMap, final Class<T> clazz) throws SystemException {
+        return createQuery(namedQuery, paramValueMap, clazz).getResultList();
     }
 
-    @Override
-    public T getByNamedQuery(final String namedQuery, final Map<String, Object> paramValue, final Class<T> clazz) {
-        return (T) createQuery(namedQuery, paramValue, clazz).getSingleResult();
+    protected T getByNamedQuery(final String namedQuery, final Map<String, Object> paramValueMap, final Class<T> clazz) throws SystemException {
+        return (T) createQuery(namedQuery, paramValueMap, clazz).getSingleResult();
     }
 
-    private Query createQuery(final String namedQuery, final Map<String, Object> paramValue, final Class<T> clazz) {
+    private Query createQuery(final String namedQuery, final Map<String, Object> paramValueMap, final Class<T> clazz) {
         Query query = manager.createNamedQuery(namedQuery, clazz);
-        if (!Objects.isNull(paramValue))
-            paramValue.forEach((name, param) -> query.setParameter(name, param));
+        if (!Objects.isNull(paramValueMap))
+            paramValueMap.forEach((name, param) -> query.setParameter(name, param));
         return query;
     }
 }

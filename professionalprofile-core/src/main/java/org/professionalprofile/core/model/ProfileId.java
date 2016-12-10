@@ -4,6 +4,8 @@ import org.professionalprofile.core.enums.Language;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 @Embeddable
@@ -14,7 +16,8 @@ public class ProfileId implements Serializable {
     private User user;
     private Language language;
 
-    @Column(name = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
     public User getUser() {
         return user;
     }
