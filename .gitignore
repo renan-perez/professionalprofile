@@ -15,3 +15,17 @@ hs_err_pid*
 professionalprofile-core/.idea/
 professionalprofile-core/target/
 professionalprofile-core/professionalprofile-core.iml
+
+
+# Professional Profile View #
+professionalprofile-client/.idea
+professionalprofile-client/node_modules
+professionalprofile-client/jspm_packages
+professionalprofile-client/npm-debug.*
+professionalprofile-client/link-checker-results.txt
+professionalprofile-client/app/**/*.js
+professionalprofile-client/*.js.map
+professionalprofile-client/e2e/**/*.js
+professionalprofile-client/e2e/**/*.js.map
+professionalprofile-client/_test-output
+professionalprofile-client/_temp
