@@ -29,3 +29,5 @@ professionalprofile-client/e2e/**/*.js
 professionalprofile-client/e2e/**/*.js.map
 professionalprofile-client/_test-output
 professionalprofile-client/_temp
+professionalprofile-client/.vscode
+professionalprofile-client/debug.log

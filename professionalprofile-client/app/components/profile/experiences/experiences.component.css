@@ -1,0 +1,87 @@
+@import '../../../resources/css/profile-item.css';
+
+.experience {
+    width: 100%;
+    padding: 0;
+}
+
+.experience p {
+    font-size: 0.9em;
+    width: 100%;
+}
+
+.experience header {
+    margin-bottom: 15px;
+}
+
+.experience header h2 {
+    font-size: 1.3em;
+    line-height: 1.7;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #5b5b5b;
+}
+
+.experience header h3 {
+    font-size: 1em;
+    line-height: 1.7;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #777;
+}
+
+.experience header p {
+    font-size: 0.8em;
+    margin-top: 5px;
+    line-height: 0.7;
+}
+
+.experience header span {
+    font-size: 0.8em;
+    margin-top: 5px;
+    line-height: 0.7;
+}
+
+.experience header img {
+    float: right;
+    max-width: 100px;
+}
+
+.experience:not(:last-child):after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 85%;
+    margin-left: 35px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: 0;
+    background: #DEDEDE;
+}
+
+.move {
+    position: relative;
+    padding: 10px; 
+    background-image: linear-gradient(to bottom, #FFF, #f5f5f5);
+    box-shadow: 0.3px 0.3px 0.3px #AAA;
+}
+
+.move .move-left::before {
+    position: absolute;
+    font-family: FontAwesome;
+    font-size: 1.5em;
+    color: crimson;
+    left: -14px;
+    top: 45%;
+    content: "\f137";
+}
+
+.move .move-right::after {
+    position: absolute;
+    font-family: FontAwesome;
+    font-size: 1.5em;
+    color: crimson;
+    right: -15px;
+    bottom: 45%;
+    content: "\f138";
+}

@@ -1,0 +1,127 @@
+.content_container {
+    margin: 0 auto;
+    max-width: 600px;
+    margin-bottom: 60px;
+}
+
+.panel-body hr {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display:block;
+    border: 0;
+    width: 134px;
+    height: 14px;
+    background-image: url("../../resources/img/separador.png");
+}
+
+.profile_header {
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px 0px 0px 0px;
+    background-color: #F5F5F5;
+}
+
+.profile_header .name {
+    text-align: center;
+    font-size: 2.2em;
+    font-weight: bold;
+}
+
+.profile_header img {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    position: relative;
+    background-color: darkgrey;
+    border: 3px solid crimson;
+    box-shadow: 2px 2px 2px #AAA, inset 2px 2px 2px #AAA;
+}
+
+.profile_header .main_information {
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    background-color: #eceaea;
+    padding: 0;
+}
+
+.profile_header .main_information::before {
+    content: "";
+    display: block;
+    height: 1px;
+    border: 1px dotted #cecece;
+    border-style: none none dashed;
+    margin-top: 10px;
+    width: 100%;
+    clear: both;
+    position: relative;
+}
+
+.profile_header .main_information span {
+    font-size: 0.9em;
+    margin-top: 5px;
+    line-height: 0.7;
+}
+
+.profile_header .main_information p {
+    margin-top: 10px;
+    font-size: 0.9em;
+    line-height: 1;
+}
+
+nav {
+    width: 100%;
+    height: 40px;
+    bottom: 0px;
+    position: fixed;
+    background-color: #FFF;
+}
+
+nav::before {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    border: 0;
+    background: #DEDEDE;
+    margin-bottom: 5px;
+}
+
+/* Profile Item */
+.profileItem {
+    margin: 0;
+    width: 100%;
+}
+
+section.profileItem:not(:last-child):after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 85%;
+    margin-left: 35px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: 0;
+    background: #FFF;
+}
+
+.profileItem h2 {
+    font-size: 1.8em;
+    color: #AAA;
+    display: block;
+    margin-bottom: 10px;
+    margin-top:40px;
+}
+
+.profileItem h4 {
+    font-size: 1.3em;
+    font-weight: bold;
+    width: 100%;
+    line-height: 1.7;
+}
+
+.profileItem p {
+    font-size: 1em;
+    width: 100%;
+}

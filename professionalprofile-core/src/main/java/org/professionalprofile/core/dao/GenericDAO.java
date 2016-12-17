@@ -32,11 +32,13 @@ public abstract class GenericDAO<T, ID extends Serializable> {
         return listByNamedQuery(clazz.getName() + ".list", null, clazz);
     }
 
-    protected List<T> listByNamedQuery(final String namedQuery, final Map<String, Object> paramValueMap, final Class<T> clazz) throws SystemException {
+    protected List<T> listByNamedQuery(final String namedQuery,
+                                       final Map<String, Object> paramValueMap, final Class<T> clazz) throws SystemException {
         return createQuery(namedQuery, paramValueMap, clazz).getResultList();
     }
 
-    protected T getByNamedQuery(final String namedQuery, final Map<String, Object> paramValueMap, final Class<T> clazz) throws SystemException {
+    protected T getByNamedQuery(final String namedQuery,
+                                final Map<String, Object> paramValueMap, final Class<T> clazz) throws SystemException {
         return (T) createQuery(namedQuery, paramValueMap, clazz).getSingleResult();
     }
 

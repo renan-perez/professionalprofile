@@ -1,0 +1,26 @@
+@import '../../../node_modules/font-awesome/css/font-awesome.css';
+
+.move {
+    position: relative;
+    padding: 10px; 
+    background-image: linear-gradient(to bottom, #FFF, #f5f5f5);
+    box-shadow: 0.3px 0.3px 0.3px #AAA;
+}
+
+.move .move-left::before {
+    position: absolute;
+    font-family: FontAwesome;
+    color: crimson;
+    left: -14px;
+    top: 45%;
+    content: "\f060";
+}
+
+.move .move-right::after {
+    position: absolute;
+    font-family: FontAwesome;
+    color: crimson;
+    right: -15px;
+    bottom: 45%;
+    content: "\f061";
+}

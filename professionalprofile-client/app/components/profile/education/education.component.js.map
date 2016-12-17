@@ -1,0 +1,1 @@
+{"version":3,"file":"education.component.js","sourceRoot":"","sources":["education.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAA4B,eAAe,CAAC,CAAA;AAS5C;IAAA;IAEA,CAAC;IATD;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,MAAM,CAAC,EAAE;YACnB,QAAQ,EAAE,WAAW;YACrB,SAAS,EAAE,CAAE,yBAAyB,CAAE;YACxC,WAAW,EAAE,0BAA0B;SAC1C,CAAC;;0BAAA;IAIF,yBAAC;AAAD,CAAC,AAFD,IAEC;AAFY,0BAAkB,qBAE9B,CAAA"}

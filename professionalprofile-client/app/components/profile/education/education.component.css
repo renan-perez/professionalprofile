@@ -1,0 +1,30 @@
+@import '../../../resources/css/profile-item.css';
+
+.education {
+    width: 100%;
+    padding: 0;
+}
+
+.education header {
+    margin-bottom: 15px;
+}
+
+.education header h2 {
+    font-size: 1.3em;
+    line-height: 1.7;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #5b5b5b;
+}
+
+.education header h3 {
+    font-size: 1.1em;
+    margin-top: 0;
+    color: #777;
+}
+
+.education header span {
+    font-size: 0.8em;
+    margin-top: 5px;
+    line-height: 0.7;
+}

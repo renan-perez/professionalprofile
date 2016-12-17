@@ -1,4 +1,4 @@
-@import 'node_modules/npm-font-source-sans-pro/source-sans-pro.css';
+@import '../../../node_modules/npm-font-source-sans-pro/source-sans-pro.css';
 
 html {
     font-family: 'Source Sans Pro', sans-serif;

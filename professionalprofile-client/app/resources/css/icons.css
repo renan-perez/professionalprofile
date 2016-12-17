@@ -1,0 +1,36 @@
+@import '../../../node_modules/font-awesome/css/font-awesome.css';
+
+.icon::before {
+    font-family: FontAwesome;
+    color: steelblue;
+    margin-right: 10px;
+    font-size: 1.2em;
+    padding: 0;
+
+}
+
+.icon-margin-left-15px::before {
+    margin-left: 15px;
+}
+
+.icon-calendar::before {
+    content: "\f073";
+}
+
+.icon-link::before {
+    content: "\f0c1";
+}
+
+.icon-email::before {
+    content: "\f1fa";
+}
+
+.icon-linkedin::before {
+    content: "\f08c";
+    color: #1B86BC;
+}
+
+.icon-github::before {
+    content: "\f092";
+    color: #000;
+}
