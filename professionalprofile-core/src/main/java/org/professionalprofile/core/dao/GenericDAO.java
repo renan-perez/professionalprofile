@@ -1,6 +1,7 @@
 package org.professionalprofile.core.dao;
 
 import org.professionalprofile.core.exception.SystemException;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,7 +9,8 @@ import javax.persistence.Query;
 import java.io.Serializable;
 import java.util.*;
 
-public abstract class GenericDAO<T, ID extends Serializable> {
+@Repository
+public class GenericDAO<T, ID extends Serializable> {
 
     @PersistenceContext
     private EntityManager manager;

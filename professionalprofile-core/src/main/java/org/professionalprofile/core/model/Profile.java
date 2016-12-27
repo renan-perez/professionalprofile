@@ -1,14 +1,20 @@
 package org.professionalprofile.core.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Set;
 
 @NamedQueries({
     @NamedQuery(
-        name = "Profile.getMainProfilel",
-        query = "SELECT p FROM Profile p WHERE p.mainProfile = TRUE"
+        name = "Profile.getMainProfile",
+        query = "SELECT p " +
+                "FROM   Profile p " +
+                "WHERE  p.mainProfile   = TRUE " +
+                "AND    p.id.user.id    = :userId"
     ),
     @NamedQuery(
             name = "Profile.getByLanguage",
@@ -31,6 +37,7 @@ public class Profile implements Serializable {
     private String industry;
     private String summary;
     private Boolean mainProfile;
+    private Contact mainContact;
     private Set<Skill> skills;
 
     @EmbeddedId
@@ -60,7 +67,6 @@ public class Profile implements Serializable {
         this.industry = industry;
     }
 
-    @Lob
     public String getSummary() {
         return summary;
     }
@@ -78,6 +84,16 @@ public class Profile implements Serializable {
         this.mainProfile = mainProfile;
     }
 
+    @Transient
+    public Contact getMainContact() {
+        return mainContact;
+    }
+
+    public void setMainContact(Contact mainContact) {
+        this.mainContact = mainContact;
+    }
+    
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "profile_has_skills",

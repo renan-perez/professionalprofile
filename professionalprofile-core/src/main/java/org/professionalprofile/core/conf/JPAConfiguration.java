@@ -22,13 +22,13 @@ public class JPAConfiguration {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setPackagesToScan(new String[]{"org.professionalprofile.core.model"});
-        em.setJpaVendorAdapter(jpaVendorAdapter());
+        em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(getAdditionalProperties());
         em.setDataSource(getDataSource());
         return em;
     }
 
-    @Bean
+    /*@Bean
     public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         jpaVendorAdapter.setDatabase(Database.POSTGRESQL);
@@ -36,7 +36,7 @@ public class JPAConfiguration {
         jpaVendorAdapter.setShowSql(true);
         jpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQL82Dialect");
         return jpaVendorAdapter;
-    }
+    }*/
     @Bean
     public PlatformTransactionManager transactionManager (EntityManagerFactory emf){
         JpaTransactionManager transactionManager = new JpaTransactionManager();

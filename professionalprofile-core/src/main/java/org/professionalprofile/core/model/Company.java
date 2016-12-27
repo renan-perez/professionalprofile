@@ -1,12 +1,17 @@
 package org.professionalprofile.core.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import static javax.persistence.GenerationType.IDENTITY;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(schema = "renanpe_professionalprofile", name = "company")

@@ -12,9 +12,18 @@
 hs_err_pid*
 
 .idea/
+.metadata/
+.recommenders/
+RemoteSystemsTempFiles/
+Servers/
+
 professionalprofile-core/.idea/
 professionalprofile-core/target/
 professionalprofile-core/professionalprofile-core.iml
+professionalprofile-core/.classpath
+professionalprofile-core/.project
+professionalprofile-core/.settings/
+
 
 
 # Professional Profile View #

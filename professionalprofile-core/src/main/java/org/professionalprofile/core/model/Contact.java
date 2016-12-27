@@ -11,6 +11,15 @@ import java.math.BigInteger;
 import static javax.persistence.EnumType.ORDINAL;
 import static  javax.persistence.GenerationType.IDENTITY;
 
+@NamedQueries({
+        @NamedQuery(
+                name ="Contact.getMainContact",
+                query = "SELECT c " +
+                        "FROM   Contact c " +
+                        "WHERE  c.mainContact   = TRUE " +
+                        "AND    c.user.id       = :userId")
+})
+
 @Entity
 @Table(schema = "renanpe_professionalprofile", name = "contact")
 public class Contact implements Serializable {

@@ -1,12 +1,16 @@
 package org.professionalprofile.core.model;
 
-import org.springframework.core.annotation.Order;
+import static javax.persistence.GenerationType.IDENTITY;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
 
 @Entity
 @Table(schema = "renanpe_professionalprofile", name = "image")
