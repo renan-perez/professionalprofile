@@ -1,18 +1,20 @@
-import { Injectable }   from '@angular/core';
-import { Headers, Http }         from '@angular/http';
-
-import 'rxjs/add/operator/toPromise';
+import { Injectable }       from '@angular/core';
+import { Headers, Http }    from '@angular/http';
 
 import { Profile }   from '../models/Profile';
 
+import 'rxjs/add/operator/toPromise';
+
+@Injectable()
 export class ProfileService {
 
-    private heroesUrl = 'api/heroes';
+    private mainInformationURL = 'http://localhost:8081/professionalprofile-core/getProfileMainInformation?userId=';
 
     constructor(private http: Http) {}
 
     getMainInformation(userId: Number): Promise<Profile> {
-        return this.http.get(this.heroesUrl)
+        console.log("GET MAIN INFORMATION @@@@@@@@@@@@@@ " + this.mainInformationURL + userId);
+        return this.http.get(this.mainInformationURL + userId)
                     .toPromise()
                     .then(response => response.json().data as Profile)
                     .catch(this.handleError);

@@ -9,6 +9,7 @@ import { SummaryComponent }     from './components/profile/summary/summary.compo
 import { SkillComponent }       from './components/profile/skills/skill.component';
 import { ExperiencesComponent } from './components/profile/experiences/experiences.component';
 import { EducationComponent }   from './components/profile/education/education.component';
+import { ProfileService }       from './services/profile.service';
 
 @NgModule({
   imports: [ 
@@ -24,6 +25,7 @@ import { EducationComponent }   from './components/profile/education/education.c
     ExperiencesComponent,
     EducationComponent
   ],
+  providers: [ ProfileService ],
   bootstrap: [ AppComponent ]
 })
 

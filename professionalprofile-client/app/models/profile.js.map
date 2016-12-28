@@ -1,1 +1,1 @@
-{"version":3,"file":"profile.js","sourceRoot":"","sources":["profile.ts"],"names":[],"mappings":";AAAA;IAAA;IAAsB,CAAC;IAAD,cAAC;AAAD,CAAC,AAAvB,IAAuB;AAAV,eAAO,UAAG,CAAA"}
+{"version":3,"file":"Profile.js","sourceRoot":"","sources":["Profile.ts"],"names":[],"mappings":";AAGA;IAAA;IAWA,CAAC;IAHG,uBAAK,GAAL;QACI,MAAM,CAAC,IAAI,CAAC,EAAE,CAAC;IACnB,CAAC;IACL,cAAC;AAAD,CAAC,AAXD,IAWC;AAXY,eAAO,UAWnB,CAAA"}
