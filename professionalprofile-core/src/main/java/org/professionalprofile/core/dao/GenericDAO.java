@@ -1,13 +1,16 @@
 package org.professionalprofile.core.dao;
 
-import org.professionalprofile.core.exception.SystemException;
-import org.springframework.stereotype.Repository;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.io.Serializable;
-import java.util.*;
+
+import org.professionalprofile.core.exception.SystemException;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class GenericDAO<T, ID extends Serializable> {
@@ -34,11 +37,13 @@ public class GenericDAO<T, ID extends Serializable> {
         return listByNamedQuery(clazz.getName() + ".list", null, clazz);
     }
 
-    protected List<T> listByNamedQuery(final String namedQuery,
+    @SuppressWarnings("unchecked")
+	protected List<T> listByNamedQuery(final String namedQuery,
                                        final Map<String, Object> paramValueMap, final Class<T> clazz) throws SystemException {
         return createQuery(namedQuery, paramValueMap, clazz).getResultList();
     }
-
+    
+    @SuppressWarnings("unchecked")
     protected T getByNamedQuery(final String namedQuery,
                                 final Map<String, Object> paramValueMap, final Class<T> clazz) throws SystemException {
         return (T) createQuery(namedQuery, paramValueMap, clazz).getSingleResult();

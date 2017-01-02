@@ -9,6 +9,15 @@ export class Contact {
     private mainContact: Boolean;
     private user: User;
 
+    constructor() {}
+
+    constructor(
+        ContactType: Number,
+        contact: string
+    ) {
+        this.contact = contact;
+    }
+
     getId(): Number {
         return this.id;
     }

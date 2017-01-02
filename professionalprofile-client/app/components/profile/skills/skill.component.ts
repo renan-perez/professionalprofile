@@ -10,6 +10,6 @@ import { ProfileComponent }     from '../profile.component';
     encapsulation: ViewEncapsulation.None
 })
 
-export class SkillComponent extends ProfileComponent {
+export class SkillComponent {
 
 }

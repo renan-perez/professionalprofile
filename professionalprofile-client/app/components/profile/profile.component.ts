@@ -20,7 +20,17 @@ export class ProfileComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.profileService.getMainInformation(1).then(profile => this.mainInformation = profile);
+        this.getMainInformation();    
+    }
+
+    getMainInformation() {
+        this.profileService.getMainInformation(1)
+            .subscribe(
+                data => this.mainInformation = data,
+                err => console.log(err)
+            );
+        console.log(this.mainInformation);
+        
     }
 
 }
