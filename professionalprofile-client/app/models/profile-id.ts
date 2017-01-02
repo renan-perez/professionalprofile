@@ -1,8 +1,14 @@
+import { User }   from '../models/user';
+
 export class ProfileId {
-    
-    userId: Number;
-    
-    constructor(userId: Number) {
-        this.userId = userId;
+    user: User;
+    language: String;
+
+    constructor(
+        user: User,
+        language: String,
+    ) {
+        this.user = user;
+        this.language = language;
     }
 }

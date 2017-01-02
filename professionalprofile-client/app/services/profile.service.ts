@@ -28,12 +28,6 @@ export class ProfileService {
                 .catch(this.handleError);
     }
 
-    mapProfile(response:Response): Profile {
-        // The response of the API has a results
-        // property with the actual results
-        return response.json().results.map(Profile.toProfile(response))
-    }
-
     private getHeaders(): Headers {
         let headers = new Headers();
         headers.append('Accept', 'application/json');

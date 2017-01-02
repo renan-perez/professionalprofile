@@ -7,8 +7,7 @@ import { Profile }          from '../../models/profile';
     moduleId: module.id,
     selector: 'profile',
     styleUrls: [ 'profile.component.css' ],
-    templateUrl: 'profile.component.html',
-    providers: [ ProfileService ]
+    templateUrl: 'profile.component.html'
 })
 
 export class ProfileComponent implements OnInit {
@@ -29,8 +28,6 @@ export class ProfileComponent implements OnInit {
                 data => this.mainInformation = data,
                 err => console.log(err)
             );
-        console.log(this.mainInformation);
-        
     }
 
 }
