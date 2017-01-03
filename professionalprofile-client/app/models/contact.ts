@@ -9,8 +9,6 @@ export class Contact {
     private mainContact: Boolean;
     private user: User;
 
-    constructor() {}
-
     constructor(
         ContactType: Number,
         contact: string
@@ -18,11 +16,20 @@ export class Contact {
         this.contact = contact;
     }
 
-    getId(): Number {
-        return this.id;
-    }
-
-    setId(id: Number) {
-        this.id = id;
+    getIcon(contactType: ContactType) {
+        switch(contactType) {
+            case ContactType.EMAIL:
+                return "icon fa-at";
+            case ContactType.GITHUB:
+                return "icon fa-linkedin-square";
+            case ContactType.LINKEDIN:
+                return "icon fa-github-square";
+            case ContactType.TELEPHONE:
+                return "icon fa-phone";
+            case ContactType.TWITTER:
+                return "icon fa-twitter-square";
+            case ContactType.WEBSITE:
+                return "icon fa-chrome";    
+        } 
     }
 }

@@ -4,11 +4,11 @@
         <!-- PANEL HEADER -->
         <header class="panel-heading profile_header">
             <img class="img-circle" width="150" height="150">
-            <h1 class="name">{{mainInformation?.id.user.name}}</h1>
+            <h1 class="name">{{mainInformation?.id.user.firstName}} {{mainInformation?.id.user.surname}}</h1>
             <div class="main_information">
                 <p>{{mainInformation?.professionalHeadline}}, {{mainInformation?.industry}}</p>
                 <span class="icon fa-map-marker">Toronto, ON, Canada</span>
-                <span class="icon fa-phone icon-margin-left-15px">+11123454577</span>
+                <span class="icon fa-phone icon-margin-left-15px">{{mainContact?.contact}}</span>
             </div>
         </header>
 

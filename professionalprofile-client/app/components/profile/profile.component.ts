@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
         this.profileService.getMainInformation(1)
             .subscribe(
                 data => this.mainInformation = data,
-                err => console.log(err)
+                err => console.log(err),
             );
     }
 
