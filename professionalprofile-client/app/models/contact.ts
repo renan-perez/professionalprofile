@@ -8,18 +8,36 @@ export class Contact {
     private contact: string;
     private mainContact: Boolean;
     private user: User;
+    private contactIcon: String;
 
     constructor(
-        ContactType: Number,
-        contact: string
+        id: Number,
+        type: ContactType,
+        contact: string,
     ) {
+        this.id = id;
+        this.type = type;
         this.contact = contact;
     }
 
-    getIcon(contactType: ContactType) {
+    setContactIcon(icon: String): void {
+        this.contactIcon = icon;
+    }
+
+    getContactIcon(): String {
+        this.contactIcon = Contact.getIcon(this.type);
+        console.log(this.contactIcon);
+        return this.contactIcon;
+    }
+
+    getType() {
+        return this.type;
+    }
+
+    static getIcon(contactType: ContactType) {
         switch(contactType) {
             case ContactType.EMAIL:
-                return "icon fa-at";
+                return "icon fa-envelope";
             case ContactType.GITHUB:
                 return "icon fa-linkedin-square";
             case ContactType.LINKEDIN:

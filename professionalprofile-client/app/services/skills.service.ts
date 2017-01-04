@@ -2,27 +2,20 @@ import { Injectable }               from '@angular/core';
 import { Observable }               from 'rxjs';
 import { Http, Response, Headers }  from '@angular/http';
 
-import { Profile }   from '../models/Profile';
-
-// Import RxJs required methods
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-
+import { Skill }   from '../models/Skill';
 
 @Injectable()
-export class ProfileService {
+export class SkillService {
 
-    private mainInformationURL = 'http://localhost:8081/professionalprofile-core/getProfileMainInformation?userId';
+    private userSkillsURL = 'http://localhost:8081/professionalprofile-core/getUserSkills?userId';
 
     constructor(private http: Http) {}
 
-    getMainInformation(userId: Number) {
-        const url = `${this.mainInformationURL}=${userId}`;
+    getUserSkills(userId: Number) {
+        const url = `${this.userSkillsURL}=${userId}`;
         return this.http
                 .get(url, { headers: this.getHeaders() })
-                .map(response => <Profile>response.json())
+                .map(response => <Skill[]>response.json())
                 .catch(this.handleError);
     }
 
@@ -36,4 +29,5 @@ export class ProfileService {
         console.log('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }
+
 }

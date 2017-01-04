@@ -3,14 +3,23 @@
 .icon::before {
     font-family: FontAwesome;
     color: steelblue;
-    margin-right: 10px;
+    margin-right: 5px;
     font-size: 1.2em;
     padding: 0;
 
 }
 
+.icon-small::before {
+    font-family: FontAwesome;
+    color: steelblue;
+    margin-right: 5px;
+    font-size: 1em;
+    padding: 0;
+
+}
+
 .icon-margin-left-15px::before {
-    margin-left: 15px;
+    margin-left: 25px;
 }
 
 .icon-calendar::before {

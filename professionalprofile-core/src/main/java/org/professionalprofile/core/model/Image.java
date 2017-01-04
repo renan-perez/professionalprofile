@@ -3,7 +3,6 @@ package org.professionalprofile.core.model;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,17 +17,17 @@ public class Image implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private BigInteger id;
+    private Integer id;
     private String fileName;
     private Byte[] content;
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    public BigInteger getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

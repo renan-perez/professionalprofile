@@ -1,7 +1,9 @@
 import { Component, OnInit }   from '@angular/core';
 
 import { ProfileService }   from '../../services/profile.service';
+import { SkillService }     from '../../services/skills.service';
 import { Profile }          from '../../models/profile';
+import { Skill }          from '../../models/skill';
 
 @Component({
     moduleId: module.id,
@@ -13,9 +15,11 @@ import { Profile }          from '../../models/profile';
 export class ProfileComponent implements OnInit {
 
     mainInformation: Profile;
+    skills: Skill[];
 
     constructor(
-        private profileService: ProfileService
+        private profileService: ProfileService,
+        private skillsService: SkillService
     ) {}
 
     ngOnInit(): void {
@@ -25,7 +29,7 @@ export class ProfileComponent implements OnInit {
     getMainInformation() {
         this.profileService.getMainInformation(1)
             .subscribe(
-                data => this.mainInformation = data,
+                profile => this.mainInformation = profile,
                 err => console.log(err),
             );
     }

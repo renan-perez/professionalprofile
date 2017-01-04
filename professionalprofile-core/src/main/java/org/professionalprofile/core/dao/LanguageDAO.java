@@ -10,7 +10,7 @@ import java.util.List;
 public class LanguageDAO extends GenericDAO<Language, Integer> {
 
     public List<Language> listAvailableProfileLanguages() throws SystemException {
-        return (List<Language>) listByNamedQuery("Profile.listAvailableProfileLanguages", null, Language.class);
+        return (List<Language>) super.listByNamedQuery("Profile.listAvailableProfileLanguages", null, Language.class);
     }
 
 }

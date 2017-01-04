@@ -1,15 +1,24 @@
 package org.professionalprofile.core.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
-import org.professionalprofile.core.enums.ContactType;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
-import java.math.BigInteger;
-
 import static javax.persistence.EnumType.ORDINAL;
 import static  javax.persistence.GenerationType.IDENTITY;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.professionalprofile.core.enums.ContactType;
 
 @NamedQueries({
         @NamedQuery(
@@ -26,7 +35,7 @@ public class Contact implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private BigInteger id;
+    private Integer id;
     private ContactType type;
     private String contact;
     private Boolean mainContact;
@@ -34,11 +43,11 @@ public class Contact implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    public BigInteger getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

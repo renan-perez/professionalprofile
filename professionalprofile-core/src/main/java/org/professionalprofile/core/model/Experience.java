@@ -4,7 +4,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -25,7 +24,7 @@ public class Experience implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private BigInteger id;
+    private Integer id;
     private String title;
     private LocalDate initialDate;
     private LocalDate finalDate;
@@ -36,11 +35,11 @@ public class Experience implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    public BigInteger getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

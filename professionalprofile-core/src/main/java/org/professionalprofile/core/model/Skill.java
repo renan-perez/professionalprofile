@@ -4,7 +4,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @NamedQueries({
-    @NamedQuery(name = "Skill.list", query = "select s from Skill s" )
+    @NamedQuery(
+    		name = "Skill.getUserSkills", 
+    		query = "SELECT 	s " +
+    				"FROM		Skill	s " +
+    				"INNER JOIN	User	u " +
+    				"ON		u.id	= :userId ")
 })
 
 @Entity

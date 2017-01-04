@@ -3,12 +3,33 @@
         
         <!-- PANEL HEADER -->
         <header class="panel-heading profile_header">
+            
+            <!-- Profile Image -->
             <img class="img-circle" width="150" height="150">
-            <h1 class="name">{{mainInformation?.id.user.firstName}} {{mainInformation?.id.user.surname}}</h1>
+            
+            <h1 class="name">
+                {{mainInformation?.id.user.firstName}} 
+                {{mainInformation?.id.user.surname}}
+            </h1>
+            
             <div class="main_information">
-                <p>{{mainInformation?.professionalHeadline}}, {{mainInformation?.industry}}</p>
-                <span class="icon fa-map-marker">Toronto, ON, Canada</span>
-                <span class="icon fa-phone icon-margin-left-15px">{{mainContact?.contact}}</span>
+                <!-- Headline and Industry -->
+                <p>
+                    {{mainInformation?.professionalHeadline}}, 
+                    {{mainInformation?.industry}}
+                </p>
+                <!-- Location -->
+                <span class="icon-small fa-map-marker">
+                    {{mainInformation?.id.user.location.city}}, 
+                    {{mainInformation?.id.user.location.region}}, 
+                    {{mainInformation?.id.user.location.country}}
+                </span>
+                <!-- Main Contact -->
+                <span class="icon-small icon-margin-left-15px"
+                    [class.fa-phone]="mainInformation?.mainContact.type === 'TELEPHONE'"
+                    [class.fa-envelope]="mainInformation?.mainContact.type === 'EMAIL'">
+                    {{mainInformation?.mainContact.contact}}
+                </span>
             </div>
         </header>
 

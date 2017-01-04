@@ -1,21 +1,14 @@
 package org.professionalprofile.core.model;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @NamedQueries({
     @NamedQuery(
@@ -47,7 +40,6 @@ public class Profile implements Serializable {
     private String summary;
     private Boolean mainProfile;
     private Contact mainContact;
-    private Set<Skill> skills;
 
     @EmbeddedId
     public ProfileId getId() {
@@ -102,21 +94,4 @@ public class Profile implements Serializable {
         this.mainContact = mainContact;
     }
     
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "profile_has_skills",
-        joinColumns = {
-            @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false, updatable = false),
-            @JoinColumn(name = "language_id", referencedColumnName = "language_id", nullable = false, updatable = false)},
-        inverseJoinColumns = {
-            @JoinColumn(name = "skill_name", nullable = false, updatable = false)}
-    )
-    public Set<Skill> getSkills() {
-        return skills;
-    }
-
-    public void setSkills(Set<Skill> skills) {
-        this.skills = skills;
-    }
 }

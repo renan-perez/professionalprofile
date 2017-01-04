@@ -11,7 +11,7 @@ import java.util.Map;
 @Repository
 public class ContactDAO extends GenericDAO<Contact, BigInteger> {
 
-    public Contact getMainContact(BigInteger userId) throws SystemException {
+    public Contact getMainContact(Integer userId) throws SystemException {
         Map<String, Object> paramValueMap = new HashMap<>();
         paramValueMap.put("userId", userId);
         return super.getByNamedQuery("Contact.getMainContact", paramValueMap, Contact.class);

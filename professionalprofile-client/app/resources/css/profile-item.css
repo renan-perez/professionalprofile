@@ -11,7 +11,7 @@ section.profileItem:not(:last-child):after {
     width: 85%;
     margin-left: 35px;
     margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     border: 0;
     background: #FFF;
 }
@@ -21,14 +21,14 @@ section.profileItem:not(:last-child):after {
     color: #AAA;
     display: block;
     margin-bottom: 10px;
-    margin-top:40px;
+    margin-top:30px;
 }
 
 .profileItem h4 {
-    font-size: 1.3em;
+    font-size: 1.4em;
     font-weight: bold;
     width: 100%;
-    line-height: 1.7;
+    line-height: 0.8;
 }
 
 .profileItem p {

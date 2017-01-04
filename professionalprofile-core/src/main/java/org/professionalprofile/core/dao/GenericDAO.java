@@ -1,7 +1,7 @@
 package org.professionalprofile.core.dao;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 
@@ -33,12 +33,12 @@ public class GenericDAO<T, ID extends Serializable> {
         return manager.find(clazz, id);
     }
 
-    protected List<T> list(final Class<T> clazz) throws SystemException {
+    protected Collection<T> list(final Class<T> clazz) throws SystemException {
         return listByNamedQuery(clazz.getName() + ".list", null, clazz);
     }
 
     @SuppressWarnings("unchecked")
-	protected List<T> listByNamedQuery(final String namedQuery,
+	protected Collection<T> listByNamedQuery(final String namedQuery,
                                        final Map<String, Object> paramValueMap, final Class<T> clazz) throws SystemException {
         return createQuery(namedQuery, paramValueMap, clazz).getResultList();
     }
