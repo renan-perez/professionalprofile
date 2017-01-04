@@ -7,7 +7,7 @@ import { Skill }   from '../models/Skill';
 @Injectable()
 export class SkillService {
 
-    private userSkillsURL = 'http://localhost:8081/professionalprofile-core/getUserSkills?userId';
+    private userSkillsURL = 'http://localhost:8081/professionalprofile-core/listUserSkills?userId';
 
     constructor(private http: Http) {}
 

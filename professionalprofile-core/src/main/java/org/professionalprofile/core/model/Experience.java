@@ -104,7 +104,7 @@ public class Experience implements Serializable {
     @ManyToOne
     @JoinColumns({
             @JoinColumn(name = "profile_user_id", referencedColumnName = "user_id", insertable = false, updatable = false),
-            @JoinColumn(name = "profile_language_id", referencedColumnName = "language_id", insertable = false, updatable = false),
+            @JoinColumn(name = "profile_language", referencedColumnName = "language", insertable = false, updatable = false),
     })
     public Profile getProfile() {
         return profile;

@@ -60,7 +60,7 @@ public class Location implements Serializable {
         this.country = country;
     }
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = true)
     public String getZipCode() {
         return zipCode;
     }

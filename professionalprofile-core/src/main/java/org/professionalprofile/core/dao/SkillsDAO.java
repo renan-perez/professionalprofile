@@ -11,10 +11,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class SkillsDAO extends GenericDAO<Skill, String> {
 	
-	public List<Skill> getUserSkills(Integer userId) throws SystemException {
+	public List<Skill> listUserSkills(Integer userId) throws SystemException {
 		Map<String, Object> paramValueMap = new HashMap<>();
         paramValueMap.put("userId", userId);
-		return (List<Skill>) super.listByNamedQuery("Skill.getUserSkills", paramValueMap, Skill.class);
+		return (List<Skill>) super.listByNamedQuery("Skill.listUserSkills", paramValueMap, Skill.class);
 	}
 	
 }

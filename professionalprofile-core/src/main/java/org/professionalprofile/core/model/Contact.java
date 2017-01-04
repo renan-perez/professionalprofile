@@ -1,6 +1,6 @@
 package org.professionalprofile.core.model;
 
-import static javax.persistence.EnumType.ORDINAL;
+import static javax.persistence.EnumType.STRING;
 import static  javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
@@ -52,7 +52,8 @@ public class Contact implements Serializable {
     }
 
     @NotNull
-    @Enumerated(ORDINAL)
+    @Enumerated(STRING)
+    @Column(length = 10)
     public ContactType getType() {
         return type;
     }

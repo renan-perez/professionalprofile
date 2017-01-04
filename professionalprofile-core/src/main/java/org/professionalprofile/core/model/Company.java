@@ -10,7 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(schema = "renanpe_professionalprofile", name = "company")
@@ -22,6 +24,8 @@ public class Company implements Serializable {
     private String name;
     private String website;
     private Image logo;
+    private Location location;
+    
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -60,4 +64,15 @@ public class Company implements Serializable {
     public void setLogo(Image logo) {
         this.logo = logo;
     }
+    
+    
+    @OneToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "id", insertable = true, updatable = true)
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
 }

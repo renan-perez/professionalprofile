@@ -10,3 +10,15 @@ li {
     display: inline-block;
     margin-right: 10px;
 }
+
+.experience-lebel {
+    font-size: 0.7em;
+    margin-top: 20px;
+}
+
+.experience-lebel .label {
+    letter-spacing: 1px;
+}
+.experience-lebel i {
+    color: grey;
+}
