@@ -13,6 +13,7 @@ import org.professionalprofile.core.model.Contact;
 import org.professionalprofile.core.model.Education;
 import org.professionalprofile.core.model.Profile;
 import org.professionalprofile.core.model.Skill;
+import org.professionalprofile.core.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +26,10 @@ public class ProfileBusiness {
     @Autowired private SkillsDAO skillsDAO;
     @Autowired private EducationDAO educationDAO;
 
-    public Profile getMainInformation(Integer userId) throws SystemException {
-        Contact contact = contactDAO.getMainContact(userId);
-        Profile profile = profileDAO.getMainProfile(userId);
+    public Profile getMainInformation(final Integer userId, final Language language) throws SystemException {
+    	Boolean mainProfile = language == null ? true : null; //When language == null, find main profile
+    	Contact contact = contactDAO.getMainContact(userId);
+        Profile profile = profileDAO.getMainProfile(userId, language, mainProfile);
         profile.setMainContact(contact);
         return profile;
     }
@@ -45,7 +47,13 @@ public class ProfileBusiness {
     }
     
     public List<Education> listUserEducation(Integer userId, Language language) throws SystemException {
-    	return educationDAO.listUserEducation(userId, language);
+    	List<Education> userEducationList = educationDAO.listUserEducation(userId, language);
+    	//Calculate period in years and months
+    	userEducationList.forEach(education -> {
+    		education.setYears(DateUtil.periodInYears(education.getInitialDate(), education.getFinalDate()));
+    		education.setMonths(DateUtil.periodInMonths(education.getInitialDate(), education.getFinalDate()));
+    	});
+    	return userEducationList;
     }
 
 }

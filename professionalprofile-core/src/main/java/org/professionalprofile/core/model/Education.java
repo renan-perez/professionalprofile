@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,7 +27,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 			name="Education.listUserEducation",
 			query="SELECT	e " +
 				  "FROM		Education e " +
-				  "WHERE	e.profile.id.user.id		= :userId " +
+				  "WHERE	e.profile.id.user.id	= :userId " +
 				  "AND		e.profile.id.language	= :language"
 	)
 })
@@ -45,6 +46,8 @@ public class Education implements Serializable {
 	private LocalDate finalDate;
 	private Location location;
 	private Profile profile;
+	private Integer years;
+	private Integer months;
 	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -84,7 +87,7 @@ public class Education implements Serializable {
 	}
 	
 	@Column(nullable = true)
-    @DateTimeFormat(iso = DATE)
+	@DateTimeFormat(iso = DATE)
 	public LocalDate getInitialDate() {
 		return initialDate;
 	}
@@ -94,7 +97,7 @@ public class Education implements Serializable {
 	}
 	
 	@Column(nullable = true)
-    @DateTimeFormat(iso = DATE)
+	@DateTimeFormat(iso = DATE)
 	public LocalDate getFinalDate() {
 		return finalDate;
 	}
@@ -114,7 +117,7 @@ public class Education implements Serializable {
 		this.location = location;
 	}
 	
-	 @ManyToOne
+	@ManyToOne
     @JoinColumns({
             @JoinColumn(name = "profile_user_id", referencedColumnName = "user_id", insertable = false, updatable = false),
             @JoinColumn(name = "profile_language", referencedColumnName = "language", insertable = false, updatable = false),
@@ -126,5 +129,23 @@ public class Education implements Serializable {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
+    
+    @Transient
+	public Integer getYears() {
+		return years;
+	}
+
+	public void setYears(Integer years) {
+		this.years = years;
+	}
 	
+	@Transient
+	public Integer getMonths() {
+		return months;
+	}
+
+	public void setMonths(Integer months) {
+		this.months = months;
+	}
+    	
 }

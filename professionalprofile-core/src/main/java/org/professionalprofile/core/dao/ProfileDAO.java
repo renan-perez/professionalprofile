@@ -17,10 +17,12 @@ public class ProfileDAO extends GenericDAO<Profile, Integer> {
     @PersistenceContext
     private EntityManager manager;
 
-    public Profile getMainProfile(Integer userId) throws SystemException {
+    public Profile getMainProfile(final Integer userId, final Language language, final Boolean mainProfile) throws SystemException {
         Map<String, Object> paramValueMap = new HashMap<>();
         paramValueMap.put("userId", userId);
-        return super.getByNamedQuery("Profile.getMainProfile", paramValueMap, Profile.class);
+        paramValueMap.put("language", language);
+        paramValueMap.put("mainProfile", mainProfile);
+        return super.getByNamedQuery("Profile.getMainInformation", paramValueMap, Profile.class);
     }
 
     public Profile getProfileByLanguage(Integer userId, Language language) throws SystemException {

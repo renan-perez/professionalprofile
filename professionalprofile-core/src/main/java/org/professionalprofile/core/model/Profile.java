@@ -10,17 +10,21 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Type;
+
 @NamedQueries({
     @NamedQuery(
-        name = "Profile.getMainProfile",
+        name = "Profile.getMainInformation",
         query = "SELECT p " +
                 "FROM   Profile p " +
-                "WHERE  p.mainProfile   = TRUE " +
+                "WHERE  (:mainProfile	IS NULL	OR	p.mainProfile   = :mainProfile) " +
+                "AND	(:language 		IS NULL OR	p.id.language	= :language) " +
                 "AND    p.id.user.id    = :userId"
     ),
     @NamedQuery(
             name = "Profile.getByLanguage",
-            query = "SELECT p FROM Profile p WHERE p.id.language = :language"
+            query = "SELECT	p "+
+            		"FROM 	Profile	p WHERE p.id.language = :language"
     ),
     @NamedQuery(
         name = "Profile.listAvailableProfileLanguages",
@@ -75,7 +79,8 @@ public class Profile implements Serializable {
     public void setSummary(String summary) {
         this.summary = summary;
     }
-
+    
+    @Type(type="boolean")
     @Column(nullable = false)
     public Boolean isMainProfile() {
         return mainProfile;

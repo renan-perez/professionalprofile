@@ -2,26 +2,27 @@ import { Injectable }               from '@angular/core';
 import { Observable }               from 'rxjs';
 import { Http, Response, Headers }  from '@angular/http';
 
-import { Profile }      from '../models/Profile';
+import { Education }    from '../models/education';
+import { Language }     from '../enums/language';
 import { ServiceUtil }  from '../util/service-util';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-
 @Injectable()
-export class ProfileService {
+export class EducationService {
 
-    private mainInformationURL = 'http://localhost:8081/professionalprofile-core/getProfileMainInformation';
+    private userEducationURL = `${ServiceUtil.getMainURL()}/listUserEducation`;
 
     constructor(private http: Http) {}
 
-    getMainInformation(userId: Number) {
-        const url = `${this.mainInformationURL}/${userId}`;
+    listUserEducation(userId: Number, language: Language) {
+        const url = `${this.userEducationURL}/${userId}/${Language[language]}`;
+        console.log(url);
         return this.http
-                .get(url, { headers: this.getHeaders() })
-                .map(response => <Profile>response.json())
+                .get(url, { headers: this.getHeaders()})
+                .map(response => <Education>response.json())
                 .catch(this.handleError);
     }
 

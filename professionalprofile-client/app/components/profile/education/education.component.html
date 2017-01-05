@@ -1,10 +1,17 @@
 <h2>Education</h2>
-<article class="education">
+<article class="education" *ngFor="let education of userEducation"> 
     <header>
-        <h2>FIO - Faculdades Integradas de Ourinhos</h2>
-        <h3>Bachelor of Information Systems, Information Technology</h3>
-        <span class="icon icon-calendar">10/2015-11/2016 - 1yr 2mos</span>
-        <span class="icon icon-map-position icon-margin-left-15px">São Paulo-SP, Brazil</span>
+        <h2>{{ education?.school }}</h2>
+        <h3>{{ education?.course }}, {{ education?.fildOfStudy }}</h3>
+        <span class="icon icon-calendar">
+            {{ education?.initialDate | date: 'MM/yyyy' }}-{{ education?.finalDate | date: 'MM/yyyy' }} -
+            <span *ngIf="education?.years > 0">{{ education?.years }}yr</span>
+            <span *ngIf="education?.months > 0">{{ education?.months }}mo</span> 
+        </span>
+        <span class="icon fa-map-marker icon-margin-left-15px">
+            {{ education?.location.city }}-{{ education?.location.region }}, 
+            {{ education?.location.country }}
+        </span>
         <span class="icon icon-link icon-margin-left-15px"><a href="http://www.alpar.com.br" target="_blank">www.alpar.com.br</a></span>
     </header>
 </article>

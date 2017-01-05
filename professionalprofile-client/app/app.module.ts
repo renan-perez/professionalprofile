@@ -11,6 +11,7 @@ import { ExperiencesComponent } from './components/profile/experiences/experienc
 import { EducationComponent }   from './components/profile/education/education.component';
 import { ProfileService }       from './services/profile.service';
 import { SkillService }         from './services/skills.service';
+import { EducationService }     from './services/education.service';
 
 @NgModule({
   imports: [ 
@@ -28,7 +29,8 @@ import { SkillService }         from './services/skills.service';
   ],
   providers: [ 
     ProfileService, 
-    SkillService 
+    SkillService,
+    EducationService
   ],
   bootstrap: [ AppComponent ]
 })

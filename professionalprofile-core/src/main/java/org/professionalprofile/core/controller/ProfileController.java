@@ -9,6 +9,7 @@ import org.professionalprofile.core.model.Education;
 import org.professionalprofile.core.model.Profile;
 import org.professionalprofile.core.model.Skill;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,19 +19,29 @@ public class ProfileController {
 
     @Autowired
     private ProfileBusiness profileBusiness;
-
-    @RequestMapping(value = "/listProfileMainInformation", method = RequestMethod.GET)
-    public Profile getMainInformation(Integer userId) {
+    
+    @RequestMapping(value = "/getProfileMainInformation/{userId}", method = RequestMethod.GET)
+    public Profile getMainInformation(@PathVariable Integer userId) {
         try {
-            return profileBusiness.getMainInformation(userId);
+            return profileBusiness.getMainInformation(userId, null);
+        } catch (SystemException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/getProfileMainInformation/{userId}/{language}", method = RequestMethod.GET)
+    public Profile getMainInformation(@PathVariable Integer userId, @PathVariable Language language) {
+        try {
+            return profileBusiness.getMainInformation(userId, language);
         } catch (SystemException e) {
             e.printStackTrace();
         }
         return null;
     }
     
-    @RequestMapping(value = "/listUserSkills", method = RequestMethod.GET)
-    public List<Skill> listUserSkills(Integer userId) {
+    @RequestMapping(value = "/listUserSkills/{userId}", method = RequestMethod.GET)
+    public List<Skill> listUserSkills(@PathVariable Integer userId) {
     	try {
             return profileBusiness.listUserSkills(userId);
         } catch (SystemException e) {
@@ -39,8 +50,8 @@ public class ProfileController {
         return null;
     }
     
-    @RequestMapping(value = "/listUserEducation", method = RequestMethod.GET)
-    public List<Education> listUserEducation(Integer userId, Language language) {
+    @RequestMapping(value = "/listUserEducation/{userId}/{language}", method = RequestMethod.GET)
+    public List<Education> listUserEducation(@PathVariable Integer userId, @PathVariable Language language) {
     	try {
             return profileBusiness.listUserEducation(userId, language);
         } catch (SystemException e) {

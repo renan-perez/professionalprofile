@@ -7,12 +7,12 @@ import { Skill }   from '../models/Skill';
 @Injectable()
 export class SkillService {
 
-    private userSkillsURL = 'http://localhost:8081/professionalprofile-core/listUserSkills?userId';
+    private userSkillsURL = 'http://localhost:8081/professionalprofile-core/listUserSkills';
 
     constructor(private http: Http) {}
 
     getUserSkills(userId: Number) {
-        const url = `${this.userSkillsURL}=${userId}`;
+        const url = `${this.userSkillsURL}/${userId}`;
         return this.http
                 .get(url, { headers: this.getHeaders() })
                 .map(response => <Skill[]>response.json())

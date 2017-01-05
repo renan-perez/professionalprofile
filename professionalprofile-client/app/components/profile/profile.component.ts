@@ -18,8 +18,7 @@ export class ProfileComponent implements OnInit {
     skills: Skill[];
 
     constructor(
-        private profileService: ProfileService,
-        private skillsService: SkillService
+        private profileService: ProfileService
     ) {}
 
     ngOnInit(): void {
