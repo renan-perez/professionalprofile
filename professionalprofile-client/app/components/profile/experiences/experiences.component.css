@@ -69,19 +69,19 @@
 .move .move-left::before {
     position: absolute;
     font-family: FontAwesome;
-    font-size: 1.5em;
+    font-size: 2em;
     color: crimson;
-    left: -14px;
-    top: 45%;
+    left: -20px;
+    top: 43%;
     content: "\f137";
 }
 
 .move .move-right::after {
     position: absolute;
     font-family: FontAwesome;
-    font-size: 1.5em;
+    font-size: 2em;
     color: crimson;
-    right: -15px;
+    right: -20px;
     bottom: 45%;
     content: "\f138";
 }

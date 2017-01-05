@@ -1,51 +1,70 @@
 <section class="content_container">
-    <section class="panel panel-default">
+    <section>
         
         <!-- PANEL HEADER -->
         <header class="panel-heading profile_header">
             
             <!-- Profile Image -->
-            <img class="img-circle" width="150" height="150">
+            <img class="img-circle" width="300" height="300">
             
-            <h1 class="name">
-                {{mainInformation?.id.user.firstName}} 
-                {{mainInformation?.id.user.surname}}
-            </h1>
-            
-            <div class="main_information">
+            <div class="main-information">
+                    
+
                 <!-- Headline and Industry -->
-                <p>
-                    {{mainInformation?.professionalHeadline}}, 
-                    {{mainInformation?.industry}}
+                <p class="head-line">
+                    {{mainInformation?.professionalHeadline | uppercase }}
                 </p>
-                <!-- Location -->
-                <span class="icon-small fa-map-marker">
-                    {{mainInformation?.id.user.location.city}}, 
-                    {{mainInformation?.id.user.location.region}}, 
-                    {{mainInformation?.id.user.location.country}}
-                </span>
-                <!-- Main Contact -->
-                <span class="icon-small icon-margin-left-15px"
-                    [class.fa-phone]="mainInformation?.mainContact.type === 'TELEPHONE'"
-                    [class.fa-envelope]="mainInformation?.mainContact.type === 'EMAIL'">
-                    {{mainInformation?.mainContact.contact}}
-                </span>
+
+                <h1 class="name">
+                    {{ mainInformation?.id.user.firstName | uppercase }} 
+                    {{ mainInformation?.id.user.surname | uppercase}}
+                </h1>
+
+                <p class="summary">{{ mainInformation?.summary }}</p>
+
+                <ul>
+                    <li>
+                        <!-- Location -->
+                        <span class="icon fa-map-marker">
+                            {{ mainInformation?.id.user.location.city | uppercase }}, 
+                            {{ mainInformation?.id.user.location.region | uppercase }}, 
+                            {{ mainInformation?.id.user.location.country | uppercase }}
+                        </span>
+                    </li>
+                    <li>
+                        <!-- Main Contact -->
+                        <span class="icon"
+                            [class.fa-phone]="mainInformation?.mainContact.type === 'TELEPHONE'"
+                            [class.fa-envelope]="mainInformation?.mainContact.type === 'EMAIL'">
+                            {{mainInformation?.mainContact.contact}}
+                        </span>
+                    </li>
+                </ul>
+  
             </div>
+
+            
         </header>
 
         <!-- PANEL BODY -->
-        <section class="panel-body">
-            
-            <section class="profileItem">
-                <h2>Summary</h2>
-                <p>{{mainInformation?.summary}}</p>
-            </section>
+        <section class="profile-body">
+
+            <hr>
 
             <skills class="profileItem"></skills>
             <experiences class="profileItem"></experiences>
             <education class="profileItem"></education>
+
+            <hr>
+
         </section>
     </section>
+
+    <p class="look-me-up">
+        LOOK ME UP ON 
+        <span class="icon fa-linkedin-square"></span>
+        <span class="icon fa-github-square"></span>
+    </p>
 </section>
 
 <!-- BOTTOM MENU -->

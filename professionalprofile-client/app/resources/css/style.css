@@ -1,9 +1,14 @@
-@import '../../../node_modules/npm-font-source-sans-pro/source-sans-pro.css';
+@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,600,700,800&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Bitter:400,400i,700&subset=latin-ext');
 
 html {
-    font-family: 'Source Sans Pro', sans-serif;
-    line-height: 1.6;	
-	margin-top: 10px;
+    line-height: 1.6;
+}
+
+body {
+    font-family: 'Bitter', serif;
+    line-height: 1.6;
+    color: #444444;
 }
 
 i {
@@ -12,4 +17,10 @@ i {
 
 a {
     color: black;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }

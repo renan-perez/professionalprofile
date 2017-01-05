@@ -1,21 +1,16 @@
 <ul>
-    <li class="level" *ngFor="let skill of skills">
-        <h4>
-            <span class="label"
-                [class.label-success]="skill.experienceLevel === 'HIGH'"
-                [class.label-primary]="skill.experienceLevel === 'MEDIUM'"
-                [class.label-warning]="skill.experienceLevel === 'LOW'">
+    <li *ngFor="let skill of skills"
+                [class.high-level]="skill.experienceLevel === 'HIGH'"
+                [class.medium-level]="skill.experienceLevel === 'MEDIUM'"
+                [class.low-level]="skill.experienceLevel === 'LOW'">
+            <span class="label label-default">
                 {{skill.name}}
             </span>
-        </h4>
     </li>
 </ul>
 
 <p class="experience-lebel">
-    
-    <span class="label label-success">HIGH</span>
-    <span class="label label-primary">MEDIUM</span>
-    <span class="label label-warning">LOW</span>
-    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-    Experience Level
+    <span class="high-level-lebel">*</span><span class="label-skills">HIGH KNOWLEDGE, </span>
+    <span class="medium-level-lebel">*</span><span class="label-skills">MEDIM KNOWLEDGE, </span>
+    <span class="low-level-lebel">*</span><span class="label-skills">LOW KNOWLEDGE</span>
 </p>

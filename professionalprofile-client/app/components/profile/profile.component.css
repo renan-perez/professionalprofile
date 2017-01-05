@@ -1,65 +1,53 @@
 .content_container {
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 700px;
     margin-bottom: 60px;
-}
-
-.panel-body hr {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    display:block;
-    border: 0;
-    width: 134px;
-    height: 14px;
-    background-image: url("../../resources/img/separador.png");
 }
 
 .profile_header {
     margin: 0 auto;
-    width: 100%;
     padding: 10px 0px 0px 0px;
-    background-color: #F5F5F5;
 }
 
 .profile_header .name {
     text-align: center;
-    font-size: 2.2em;
+    font-size: 4.5em;
     font-weight: bold;
+    letter-spacing: 2px;
+    font-family: 'Dosis', sans-serif;
 }
 
 .profile_header img {
     margin-top: 10px;
+    margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
     display: block;
     position: relative;
     background-color: darkgrey;
-    border: 3px solid crimson;
+    border: 4px solid crimson;
     box-shadow: 2px 2px 2px #AAA, inset 2px 2px 2px #AAA;
 }
 
-.profile_header .main_information {
-    text-align: center;
+.profile_header .main-information {
     height: 100%;
     width: 100%;
-    background-color: #eceaea;
-    padding: 0;
 }
 
-.profile_header .main_information::before {
-    content: "";
-    display: block;
-    height: 1px;
-    border: 1px dotted #cecece;
-    border-style: none none dashed;
-    margin-top: 10px;
-    width: 100%;
-    clear: both;
-    position: relative;
+.profile_header .head-line {
+    font-family: 'Dosis', sans-serif;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    font-size: 2em;
+    color: #fff;
+    background-color: #5bc0de;
 }
 
-.profile_header .main_information span {
-    font-size: 0.9em;
+
+.profile_header .main_information header span {
+    font-size: 0.8em;
     margin-top: 5px;
     line-height: 0.7;
 }
@@ -69,6 +57,53 @@
     font-size: 0.9em;
     line-height: 1;
 }
+
+.profile_header .main-information p::before {
+    content: "{ ";
+    color: #fff;
+}
+
+.profile_header .main-information p::after {
+    content: " }";
+    color: #fff;
+}
+
+
+.profile_header .main-information ul {
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.profile_header .main-information li {
+    font-family: 'Dosis', sans-serif;
+    padding: 1em;
+    display: inline-block;
+    font-size: 1.2em;
+}
+
+
+.profile_header .summary {
+    font-size: 1.8em;
+    letter-spacing: 2px;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.profile-body {
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.profile-body hr {
+    border: 0;
+    height: 1em;
+    background: #5bc0de;
+    display: block;
+    clear: both;
+    padding: 0;
+    border-radius: 0.25em; 
+}
+
 
 nav {
     width: 100%;
@@ -102,4 +137,12 @@ section.profileItem:not(:last-child):after {
     margin-left: 35px;
     border: 0;
     background: #FFF;
+}
+
+.look-me-up {
+    font-family: 'Dosis', sans-serif;
+    font-weight: bold;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 2.5em;
 }
