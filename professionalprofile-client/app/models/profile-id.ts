@@ -1,12 +1,13 @@
 import { User }   from '../models/user';
+import { Language }   from '../enums/language';
 
 export class ProfileId {
     user: User;
-    language: String;
+    language: Language;
 
     constructor(
         user: User,
-        language: String,
+        language: Language,
     ) {
         this.user = user;
         this.language = language;

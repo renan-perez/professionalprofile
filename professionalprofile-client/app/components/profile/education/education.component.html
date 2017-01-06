@@ -4,7 +4,8 @@
         <h2>{{ education?.school }}</h2>
         <h3>{{ education?.course }}, {{ education?.fildOfStudy }}</h3>
         <span class="icon icon-calendar">
-            {{ education?.initialDate | date: 'MM/yyyy' }}-{{ education?.finalDate | date: 'MM/yyyy' }} -
+            {{ education?.initialDate | date: 'MM/yyyy' }} -
+            {{ education?.finalDate | date: 'MM/yyyy' }} -
             <span *ngIf="education?.years > 0">{{ education?.years }}yr</span>
             <span *ngIf="education?.months > 0">{{ education?.months }}mo</span> 
         </span>
@@ -13,6 +14,10 @@
             {{ education?.location.region }}, 
             {{ education?.location.country }}
         </span>
-        <span class="icon icon-link icon-margin-left-15px"><a href="http://www.alpar.com.br" target="_blank">www.alpar.com.br</a></span>
+        <span class="icon icon-link icon-margin-left-15px">
+            <a href="http://www.alpar.com.br" target="_blank">
+            www.test.com.br
+            </a>
+        </span>
     </header>
 </article>

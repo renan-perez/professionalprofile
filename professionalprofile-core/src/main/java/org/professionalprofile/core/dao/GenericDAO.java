@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -40,13 +41,21 @@ public class GenericDAO<T, ID extends Serializable> {
     @SuppressWarnings("unchecked")
 	protected Collection<T> listByNamedQuery(final String namedQuery,
                                        final Map<String, Object> paramValueMap, final Class<T> clazz) throws SystemException {
-        return createQuery(namedQuery, paramValueMap, clazz).getResultList();
+    	try {
+    		return createQuery(namedQuery, paramValueMap, clazz).getResultList();
+    	} catch (NoResultException e) {
+			return null;
+		}
     }
     
     @SuppressWarnings("unchecked")
     protected T getByNamedQuery(final String namedQuery,
                                 final Map<String, Object> paramValueMap, final Class<T> clazz) throws SystemException {
-        return (T) createQuery(namedQuery, paramValueMap, clazz).getSingleResult();
+    	try {
+    		return (T) createQuery(namedQuery, paramValueMap, clazz).setMaxResults(1).getSingleResult();
+    	} catch (NoResultException e) {
+			return null;
+		}
     }
 
     private Query createQuery(final String namedQuery, final Map<String, Object> paramValueMap, final Class<T> clazz) {

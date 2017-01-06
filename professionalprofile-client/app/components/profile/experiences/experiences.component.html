@@ -1,18 +1,27 @@
 <h2>Experience</h2>
 <div class="move">
-    <a href="#" class="move-left"></a>
-    <a href="#" class="move-right"></a>
+    <a href="javascript:void(0)" (click)="getUserOlderExperience()" class="move-left"></a>
+    <a href="javascript:void(0)" (click)="getUserNewerExperience()" class="move-right"></a>
     <article class="experience">
         <header>
             <img class="img-rounded experience_company_img">
-            <h2>Software Developer</h2>
-            <h3>Alpar Technology</h3>
-            <span class="icon icon-calendar">10/2015-11/2016 - 1yr 2mos</span>
-            <span class="icon fa-map-marker icon-margin-left-15px">São Paulo-SP, Brazil</span>
-            <span class="icon icon-link icon-margin-left-15px"><a href="http://www.alpar.com.br" target="_blank">www.alpar.com.br</a></span>
+            <h2>{{ experience?.title }}</h2>
+            <h3>{{ experience?.company.name }}</h3>
+            <span class="icon icon-calendar">
+                {{ experience?.initialDate | date: 'MM/yyyy' }} -
+                {{ experience?.finalDate | date: 'MM/yyyy' }}
+                - 1yr 2mos</span>
+            <span class="icon fa-map-marker icon-margin-left-15px">
+                {{ experience?.company.location.city }}, 
+                {{ experience?.company.location.region }}, 
+                {{ experience?.company.location.country }}
+            </span>
+            <span class="icon icon-link icon-margin-left-15px">
+                <a href="http://www.alpar.com.br" target="_blank">
+                    {{ experience?.company.website }}
+                </a>
+            </span>
         </header>
-        <p>-  (8 months) Java Developer at a project to develop a web-based application for a real estate investment institution: my daily activities are implementation of new features, bug fixes in existing features, implementation of solution to improve the system architecture. The technologies used are Java 7, Spring MVC, Hibernate, Java Server Pages, JavaScript, JQuery, Amazon WS, Tomcat, HTML, CSS, Oracle Database and Git.
-        </p>
-        <p>-  (6 months) Java Developer at a project to develop a web-based application to deal with problems in payment transactions for a Company of Electronic Payment on toll: my daily activities are implementation of new features and deal with homologation bug fixes. The technologies used are Java 8, Spring Dependency Injection, Java Server Pages, Primefaces, Weblogic 12c, SOAP Web Services, HTML and CSS.</p>
+        <p>{{ experience?.description }}</p>
     </article>
 </div>

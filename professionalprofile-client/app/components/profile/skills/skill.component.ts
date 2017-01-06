@@ -12,7 +12,7 @@ import { Skill }          from '../../../models/skill';
     templateUrl: 'skill.component.html',
 })
 
-export class SkillComponent {
+export class SkillComponent implements OnInit {
 
     skills: Skill[];
 

@@ -8,6 +8,8 @@
 .experience p {
     font-size: 0.9em;
     width: 100%;
+    white-space: pre-wrap; 
+    position: relative;
 }
 
 .experience header {

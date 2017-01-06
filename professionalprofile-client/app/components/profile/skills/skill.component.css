@@ -12,31 +12,6 @@ li {
     font-size: 1.4em;
 }
 
-.high-level::before {
-    position: absolute;
-    font-size: 1.5em;
-    color: #02b0e0;
-    content: "*";
-}
-
-.medium-level::before {
-    position: absolute;
-    font-size: 1.5em;
-    color: #dc143c;
-    content: "*";
-}
-
-.low-level::before {
-    position: absolute;
-    font-size: 1.5em;
-    color: #f0ad4e;
-    content: "*";
-}
-
-ul li span {
-    padding-left: 15px;
-}
-
 .experience-lebel {
     text-align: right;
     width: 100%;

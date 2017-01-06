@@ -12,11 +12,41 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+@NamedQueries({
+	@NamedQuery(
+			name="Experience.getNewestExperience",
+			query="SELECT	e " +
+				  "FROM		Experience e " +
+				  "ORDER BY e.initialDate DESC"),
+	
+	@NamedQuery(
+			name="Experience.getOlderExperience",
+			query="SELECT	e " +
+				  "FROM		Experience e " +
+				  "WHERE	e.initialDate < :inicialDate " +
+				  "ORDER BY e.initialDate DESC "),
+	
+	@NamedQuery(
+			name="Experience.getNewerExperience",
+			query="SELECT	e " +
+				  "FROM		Experience e " +
+				  "WHERE	e.initialDate > :inicialDate " +
+				  "ORDER BY e.initialDate DESC"),
+	
+	@NamedQuery(
+			name="Experience.getOldestExperience",
+			query="SELECT	e " +
+				  "FROM		Experience e " +
+				  "ORDER BY e.initialDate"),
+})
 
 @Entity
 @Table(schema = "renanpe_professionalprofile", name = "experience")
@@ -32,6 +62,8 @@ public class Experience implements Serializable {
     private String site;
     private Company company;
     private Profile profile;
+    private Integer years;
+	private Integer months;
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -72,7 +104,6 @@ public class Experience implements Serializable {
         this.finalDate = finalDate;
     }
 
-    @Lob
     @Column(nullable = true)
     public String getDescription() {
         return Description;
@@ -113,4 +144,22 @@ public class Experience implements Serializable {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
+    
+    @Transient
+	public Integer getYears() {
+		return years;
+	}
+
+	public void setYears(Integer years) {
+		this.years = years;
+	}
+	
+	@Transient
+	public Integer getMonths() {
+		return months;
+	}
+
+	public void setMonths(Integer months) {
+		this.months = months;
+	}
 }

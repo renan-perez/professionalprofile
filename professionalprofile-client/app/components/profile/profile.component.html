@@ -5,7 +5,7 @@
         <header class="panel-heading profile_header">
             
             <!-- Profile Image -->
-            <img class="img-circle" width="300" height="300">
+            <img src="./app/components/profile/profpic.png" class="img-circle" width="300" height="300">
             
             <div class="main-information">
                     
@@ -34,7 +34,7 @@
                     <li>
                         <!-- Main Contact -->
                         <span class="icon"
-                            [class.fa-phone]="mainInformation?.mainContact.type === 'TELEPHONE'"
+                            [class.fa-phone-square]="mainInformation?.mainContact.type === 'TELEPHONE'"
                             [class.fa-envelope]="mainInformation?.mainContact.type === 'EMAIL'">
                             {{mainInformation?.mainContact.contact}}
                         </span>
@@ -66,7 +66,3 @@
         <span class="icon fa-github-square"></span>
     </p>
 </section>
-
-<!-- BOTTOM MENU -->
-<nav>
-</nav>
