@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -44,6 +46,7 @@ public class Profile implements Serializable {
     private String summary;
     private Boolean mainProfile;
     private Contact mainContact;
+    private Image image;
 
     @EmbeddedId
     public ProfileId getId() {
@@ -98,5 +101,14 @@ public class Profile implements Serializable {
     public void setMainContact(Contact mainContact) {
         this.mainContact = mainContact;
     }
+    
+    @Transient
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
     
 }
