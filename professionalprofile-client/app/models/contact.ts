@@ -10,16 +10,6 @@ export class Contact {
     private user: User;
     private contactIcon: String;
 
-    constructor(
-        id: Number,
-        type: ContactType,
-        contact: string,
-    ) {
-        this.id = id;
-        this.type = type;
-        this.contact = contact;
-    }
-
     setContactIcon(icon: String): void {
         this.contactIcon = icon;
     }

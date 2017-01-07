@@ -14,7 +14,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ExperienceService {
 
-    private userExperienceURL = `${ServiceUtil.getMainURL()}/getExperience`;
+    private userExperienceURL = `${ServiceUtil.MAIN_URL}/getExperience`;
 
     constructor(private http: Http) {}
 

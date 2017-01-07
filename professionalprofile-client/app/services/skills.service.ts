@@ -2,32 +2,25 @@ import { Injectable }               from '@angular/core';
 import { Observable }               from 'rxjs';
 import { Http, Response, Headers }  from '@angular/http';
 
-import { Skill }   from '../models/Skill';
+import { Skill }            from '../models/Skill';
+import { GenericService }   from '../services/service-generic.service';
+import { ServiceUtil }      from '../util/service-util';
 
 @Injectable()
-export class SkillService {
+export class SkillService extends GenericService {
 
-    private userSkillsURL = 'http://localhost:8081/professionalprofile-core/listUserSkills';
+    private userSkillsURL =  `${ServiceUtil.MAIN_URL}/listUserSkills`;
 
-    constructor(private http: Http) {}
+    constructor(private http: Http) {
+        super();
+    }
 
     getUserSkills(userId: Number) {
         const url = `${this.userSkillsURL}/${userId}`;
         return this.http
-                .get(url, { headers: this.getHeaders() })
+                .get(url, { headers: super.getHeaders() })
                 .map(response => <Skill[]>response.json())
-                .catch(this.handleError);
-    }
-
-    private getHeaders(): Headers {
-        let headers = new Headers();
-        headers.append('Accept', 'application/json');
-        return headers;
-    }
-
-    private handleError(error: any): Promise<any> {
-        console.log('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
+                .catch(super.handleError);
     }
 
 }

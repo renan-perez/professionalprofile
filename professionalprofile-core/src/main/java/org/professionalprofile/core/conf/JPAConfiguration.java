@@ -25,16 +25,7 @@ public class JPAConfiguration {
         em.setDataSource(getDataSource());
         return em;
     }
-
-    /*@Bean
-    public JpaVendorAdapter jpaVendorAdapter() {
-        HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
-        jpaVendorAdapter.setDatabase(Database.POSTGRESQL);
-        jpaVendorAdapter.setGenerateDdl(true);
-        jpaVendorAdapter.setShowSql(true);
-        jpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQL82Dialect");
-        return jpaVendorAdapter;
-    }*/
+    
     @Bean
     public PlatformTransactionManager transactionManager (EntityManagerFactory emf){
         JpaTransactionManager transactionManager = new JpaTransactionManager();
@@ -44,16 +35,16 @@ public class JPAConfiguration {
 
     private DataSource getDataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
-        ds.setDriverClassName("org.postgresql.Driver");
-        ds.setUrl("jdbc:postgresql://localhost:5433/renanpe_professionalprofile");
-        ds.setUsername("postgres");
-        ds.setPassword("welcome1");
+        ds.setDriverClassName("com.mysql.jdbc.Driver");
+        ds.setUrl("jdbc:mysql://localhost:3306/renanpe_professionalprofile");
+        ds.setUsername("root");
+        ds.setPassword("Welcome1@");
         return ds;
     }
 
     private Properties getAdditionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL82Dialect");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
         properties.setProperty("hibernate.default_schema", "renanpe_professionalprofile");
         properties.setProperty("hibernate.hbm2ddl.auto", "validate");
         properties.setProperty("hibernate.show_sql", "true");

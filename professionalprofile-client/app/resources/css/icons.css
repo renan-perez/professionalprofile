@@ -1,12 +1,19 @@
 @import '../../../node_modules/font-awesome/css/font-awesome.css';
 
+.icon-contact {
+    font-family: FontAwesome;
+    color: #4682b4;
+    margin-right: 5px;
+    font-size: 1.2em;
+    padding: 0;
+}
+
 .icon::before {
     font-family: FontAwesome;
     color: steelblue;
     margin-right: 5px;
     font-size: 1.2em;
     padding: 0;
-
 }
 
 .icon-small::before {

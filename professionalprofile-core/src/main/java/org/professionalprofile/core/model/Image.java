@@ -9,9 +9,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Type;
+@NamedQueries({
+	@NamedQuery(
+			name="Image.getUserPhoto",
+			query="SELECT		i " + 
+				  "FROM			Image 	i " + 
+				  "INNER JOIN	User 	u " +
+				  "ON 			u.id = 		:userId")
+})
 
 @Entity
 @Table(schema = "renanpe_professionalprofile", name = "image")
@@ -21,7 +30,7 @@ public class Image implements Serializable {
 
     private Integer id;
     private String fileName;
-    private Byte[] content;
+    private byte[] content;
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -44,11 +53,11 @@ public class Image implements Serializable {
 
     @Lob
     @Column(nullable = false)
-    public Byte[] getContent() {
+    public byte[] getContent() {
         return content;
     }
 
-    public void setContent(Byte[] content) {
+    public void setContent(byte[] content) {
         this.content = content;
     }
 }

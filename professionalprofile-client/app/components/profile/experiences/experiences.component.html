@@ -10,7 +10,9 @@
             <span class="icon icon-calendar">
                 {{ experience?.initialDate | date: 'MM/yyyy' }} -
                 {{ experience?.finalDate | date: 'MM/yyyy' }}
-                - 1yr 2mos</span>
+                <span *ngIf="experience?.years > 0">{{ experience?.years }}yr</span>
+                <span *ngIf="experience?.months > 0">{{ experience?.months }}mo</span> 
+            </span>
             <span class="icon fa-map-marker icon-margin-left-15px">
                 {{ experience?.company.location.city }}, 
                 {{ experience?.company.location.region }}, 

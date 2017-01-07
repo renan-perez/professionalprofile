@@ -22,11 +22,17 @@ import org.professionalprofile.core.enums.ContactType;
 
 @NamedQueries({
         @NamedQuery(
-                name ="Contact.getMainContact",
+                name = "Contact.getMainContact",
                 query = "SELECT c " +
                         "FROM   Contact c " +
                         "WHERE  c.mainContact   = TRUE " +
-                        "AND    c.user.id       = :userId")
+                        "AND    c.user.id       = :userId"),
+        @NamedQuery(
+        		name = "Contact.getUserSocialNetworks",
+        		query = "SELECT c " +
+                        "FROM   Contact c " +
+                        "WHERE  c.user.id       = 	:userId " +
+                        "AND    c.type       	IN 	:typeList"),
 })
 
 @Entity

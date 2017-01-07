@@ -25,7 +25,7 @@ public class ProfileDAO extends GenericDAO<Profile, Integer> {
         return super.getByNamedQuery("Profile.getMainInformation", paramValueMap, Profile.class);
     }
 
-    public Profile getProfileByLanguage(Integer userId, Language language) throws SystemException {
+    public Profile getProfileByLanguage(final Integer userId, final Language language) throws SystemException {
         Map<String, Object> paramValueMap = new HashMap<>();
         paramValueMap.put("language", language);
         paramValueMap.put("userId", userId);

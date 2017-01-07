@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -58,7 +59,7 @@ public class Experience implements Serializable {
     private String title;
     private LocalDate initialDate;
     private LocalDate finalDate;
-    private String Description;
+    private String description;
     private String site;
     private Company company;
     private Profile profile;
@@ -103,14 +104,15 @@ public class Experience implements Serializable {
     public void setFinalDate(LocalDate finalDate) {
         this.finalDate = finalDate;
     }
-
+    
+    @Lob
     @Column(nullable = true)
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     @Column(length = 100, nullable = true)

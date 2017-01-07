@@ -60,8 +60,9 @@ public class GenericDAO<T, ID extends Serializable> {
 
     private Query createQuery(final String namedQuery, final Map<String, Object> paramValueMap, final Class<T> clazz) {
         Query query = manager.createNamedQuery(namedQuery, clazz);
-        if (!Objects.isNull(paramValueMap))
+        if (!Objects.isNull(paramValueMap)) {
             paramValueMap.forEach((name, param) -> query.setParameter(name, param));
+        }
         return query;
     }
 }

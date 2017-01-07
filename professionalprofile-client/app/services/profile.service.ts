@@ -1,6 +1,6 @@
 import { Injectable }               from '@angular/core';
 import { Observable }               from 'rxjs';
-import { Http, Response, Headers }  from '@angular/http';
+import { Http, Response, Headers, ResponseContentType }  from '@angular/http';
 
 import { Profile }      from '../models/Profile';
 import { ServiceUtil }  from '../util/service-util';
@@ -13,7 +13,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ProfileService {
 
-    private mainInformationURL = 'http://localhost:8081/professionalprofile-core/getProfileMainInformation';
+    private mainInformationURL = `${ServiceUtil.MAIN_URL}/getProfileMainInformation`;
+    private userPhotoURL = `${ServiceUtil.MAIN_URL}/getUserPhoto`;
 
     constructor(private http: Http) {}
 
@@ -23,6 +24,11 @@ export class ProfileService {
                 .get(url, { headers: this.getHeaders() })
                 .map(response => <Profile>response.json())
                 .catch(this.handleError);
+    }
+
+    getUserPhoto(userId: Number) {
+        const url = `${this.userPhotoURL}/${userId}`;
+        return url;
     }
 
     private getHeaders(): Headers {

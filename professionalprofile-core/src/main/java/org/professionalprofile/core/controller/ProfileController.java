@@ -1,18 +1,24 @@
 package org.professionalprofile.core.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.professionalprofile.core.business.ProfileBusiness;
 import org.professionalprofile.core.enums.Age;
 import org.professionalprofile.core.enums.Language;
 import org.professionalprofile.core.exception.SystemException;
+import org.professionalprofile.core.model.Contact;
 import org.professionalprofile.core.model.Education;
 import org.professionalprofile.core.model.Experience;
+import org.professionalprofile.core.model.Image;
 import org.professionalprofile.core.model.Profile;
 import org.professionalprofile.core.model.Skill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,6 +51,17 @@ public class ProfileController {
         return null;
     }
     
+    @RequestMapping(value = "/getUserPhoto/{userId}")
+    public void getUserPhoto(@PathVariable Integer userId, HttpServletResponse response) {
+    	try {
+    		Image photo = profileBusiness.getUserPhoto(userId);
+		   response.setContentType(MediaType.IMAGE_PNG_VALUE);
+		   response.getOutputStream().write(photo.getContent());
+        } catch (SystemException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     @RequestMapping(value = "/listUserSkills/{userId}", method = RequestMethod.GET)
     public List<Skill> listUserSkills(@PathVariable Integer userId) {
     	try {
@@ -70,6 +87,16 @@ public class ProfileController {
     			@RequestParam(name="initialDate", required=false) @DateTimeFormat(pattern = "yyyy,M,d") LocalDate inicialDate) {
     	try {
             return profileBusiness.getExperience(inicialDate, age);
+        } catch (SystemException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    @RequestMapping(value = "/listUserSocialNetworks/{userId}", method = RequestMethod.GET)
+    public List<Contact> listUserSocialNetworks(@PathVariable Integer userId) {
+    	try {
+            return profileBusiness.listUserSocialNetworks(userId);
         } catch (SystemException e) {
             e.printStackTrace();
         }

@@ -5,7 +5,7 @@
         <header class="panel-heading profile_header">
             
             <!-- Profile Image -->
-            <img src="./app/components/profile/profpic.png" class="img-circle" width="300" height="300">
+            <img src="{{ userPhotoURL }}" class="img-circle" width="300" height="300">
             
             <div class="main-information">
                     
@@ -60,9 +60,30 @@
         </section>
     </section>
 
-    <p class="look-me-up">
-        LOOK ME UP ON 
-        <span class="icon fa-linkedin-square"></span>
-        <span class="icon fa-github-square"></span>
-    </p>
+    <div class="look-me-up">
+        <span class="right-space">LOOK ME UP ON</span>
+        <ul>
+            <li *ngFor="let socialNetwork of userSocialNetworks" >
+                <a href="{{ socialNetwork.contact }}" target="_blank"
+                    class="icon-contact"
+                        [class.fa-linkedin-square]="socialNetwork.type === 'LINKEDIN'"
+                        [class.fa-github-square]="socialNetwork.type === 'GITHUB'">
+                </a>
+            </li>
+        </ul>
+    </div>  
+</section>
+
+
+
+<div class="speech-bubble" [hidden]="!showBalloon">
+    <a href="javascript:void(0)" class="fa fa-times exit-speech" (click)="closeBallon()"></a>
+    <div class="arrow bottom right"></div>
+    Click and check out on <span>GITHUB</span> how this profile was built.
+</div>
+
+<section class="open-code">
+    <a href="https://github.com/renan-perez/professionalprofile" target="_blank">
+    <i class="fa fa-code" aria-hidden="true"></i>
+    </a>
 </section>

@@ -1,9 +1,9 @@
 import { Component, OnInit }   from '@angular/core';
 
 import { ProfileService }   from '../../services/profile.service';
-import { SkillService }     from '../../services/skills.service';
+import { ContactService }   from '../../services/contact.service';
 import { Profile }          from '../../models/profile';
-import { Skill }          from '../../models/skill';
+import { Contact }            from '../../models/contact';
 
 @Component({
     moduleId: module.id,
@@ -15,22 +15,46 @@ import { Skill }          from '../../models/skill';
 export class ProfileComponent implements OnInit {
 
     mainInformation: Profile;
-    skills: Skill[];
+    userSocialNetworks: Contact[];
+    userPhotoURL: String;
+    userId: Number;
+    showBalloon: Boolean;
 
     constructor(
-        private profileService: ProfileService
+        private profileService: ProfileService,
+        private contactService: ContactService
     ) {}
 
     ngOnInit(): void {
-        this.getMainInformation();    
+        this.userId = 1;
+        this.showBalloon = true;
+        this.getMainInformation(this.userId);
+        this.getUserPhoto(this.userId);
+        this.getUserSocialNetworks(this.userId);
     }
 
-    getMainInformation() {
-        this.profileService.getMainInformation(1)
+    getMainInformation(userId: Number) {
+        this.profileService.getMainInformation(userId)
             .subscribe(
                 profile => this.mainInformation = profile,
-                err => console.log(err),
+                err => console.log(err)
             );
+    }
+
+    getUserPhoto(userId: Number) {
+        this.userPhotoURL = this.profileService.getUserPhoto(userId);
+    }
+
+    getUserSocialNetworks(userId: Number) {
+        this.contactService.listUserSocialNetworks(userId)
+            .subscribe(
+                socialNetworks => this.userSocialNetworks = socialNetworks,
+                err => console.log(err)
+            )
+    }
+
+    closeBallon() {
+        this.showBalloon = false;
     }
 
 }

@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class EducationService {
 
-    private userEducationURL = `${ServiceUtil.getMainURL()}/listUserEducation`;
+    private userEducationURL = `${ServiceUtil.MAIN_URL}/listUserEducation`;
 
     constructor(private http: Http) {}
 

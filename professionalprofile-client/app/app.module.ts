@@ -13,6 +13,7 @@ import { ProfileService }       from './services/profile.service';
 import { SkillService }         from './services/skills.service';
 import { EducationService }     from './services/education.service';
 import { ExperienceService }     from './services/experience.service';
+import { ContactService }     from './services/contact.service';
 
 @NgModule({
   imports: [ 
@@ -32,7 +33,8 @@ import { ExperienceService }     from './services/experience.service';
     ProfileService, 
     SkillService,
     EducationService,
-    ExperienceService
+    ExperienceService,
+    ContactService
   ],
   bootstrap: [ AppComponent ]
 })

@@ -46,6 +46,7 @@ public class Education implements Serializable {
 	private LocalDate finalDate;
 	private Location location;
 	private Profile profile;
+	private Image logo;
 	private Integer years;
 	private Integer months;
 	
@@ -146,6 +147,16 @@ public class Education implements Serializable {
 
 	public void setMonths(Integer months) {
 		this.months = months;
+	}
+	
+	@ManyToOne
+    @JoinColumn(columnDefinition = "image_id", referencedColumnName = "id", updatable = true, insertable = true)
+	public Image getLogo() {
+		return logo;
+	}
+
+	public void setLogo(Image logo) {
+		this.logo = logo;
 	}
     	
 }
