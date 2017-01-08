@@ -5,15 +5,14 @@
         <header class="panel-heading profile_header">
             
             <!-- Profile Image -->
-            <img src="{{ userPhotoURL }}" class="img-circle" width="300" height="300">
+            <img src="{{ userPhotoURL }}" class="img-circle">
             
             <div class="main-information">
-                    
 
                 <!-- Headline and Industry -->
-                <p class="head-line">
-                    {{mainInformation?.professionalHeadline | uppercase }}
-                </p>
+                <div class="head-line">
+                    <p *ngIf="mainInformation?.professionalHeadline != null">{{mainInformation?.professionalHeadline | uppercase }}</p>
+                </div>
 
                 <h1 class="name">
                     {{ mainInformation?.id.user.firstName | uppercase }} 
@@ -25,7 +24,7 @@
                 <ul>
                     <li>
                         <!-- Location -->
-                        <span class="icon fa-map-marker">
+                        <span class="icon fa-map-marker" *ngIf="mainInformation?.id.user.location != null">
                             {{ mainInformation?.id.user.location.city | uppercase }}, 
                             {{ mainInformation?.id.user.location.region | uppercase }}, 
                             {{ mainInformation?.id.user.location.country | uppercase }}
@@ -33,7 +32,7 @@
                     </li>
                     <li>
                         <!-- Main Contact -->
-                        <span class="icon"
+                        <span class="icon" *ngIf="mainInformation?.mainContact != null"
                             [class.fa-phone-square]="mainInformation?.mainContact.type === 'TELEPHONE'"
                             [class.fa-envelope]="mainInformation?.mainContact.type === 'EMAIL'">
                             {{mainInformation?.mainContact.contact}}
@@ -60,7 +59,7 @@
         </section>
     </section>
 
-    <div class="look-me-up">
+    <div class="look-me-up" *ngIf="userSocialNetworks != null">
         <span class="right-space">LOOK ME UP ON</span>
         <ul>
             <li *ngFor="let socialNetwork of userSocialNetworks" >
@@ -77,9 +76,9 @@
 
 
 <div class="speech-bubble" [hidden]="!showBalloon">
-    <a href="javascript:void(0)" class="fa fa-times exit-speech" (click)="closeBallon()"></a>
+    <p class="text-align-right"><a href="javascript:void(0)" class="fa fa-times exit-speech" (click)="closeBallon()"></a></p>
+    <p>Click and check out on <span>GITHUB</span> how this profile was built.</p>
     <div class="arrow bottom right"></div>
-    Click and check out on <span>GITHUB</span> how this profile was built.
 </div>
 
 <section class="open-code">

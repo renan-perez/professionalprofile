@@ -29,18 +29,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 				  "ORDER BY e.initialDate DESC"),
 	
 	@NamedQuery(
+			name="Experience.getNewerExperience",
+			query="SELECT	e " +
+				  "FROM		Experience e " +
+				  "WHERE	e.initialDate > :inicialDate " +
+				  "ORDER BY e.initialDate"),
+	
+	@NamedQuery(
 			name="Experience.getOlderExperience",
 			query="SELECT	e " +
 				  "FROM		Experience e " +
 				  "WHERE	e.initialDate < :inicialDate " +
 				  "ORDER BY e.initialDate DESC "),
-	
-	@NamedQuery(
-			name="Experience.getNewerExperience",
-			query="SELECT	e " +
-				  "FROM		Experience e " +
-				  "WHERE	e.initialDate > :inicialDate " +
-				  "ORDER BY e.initialDate DESC"),
 	
 	@NamedQuery(
 			name="Experience.getOldestExperience",

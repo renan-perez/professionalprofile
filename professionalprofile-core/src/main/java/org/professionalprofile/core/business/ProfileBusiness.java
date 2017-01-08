@@ -39,7 +39,8 @@ public class ProfileBusiness {
     	Boolean mainProfile = language == null ? true : null; //When language == null, find main profile
     	Contact contact = contactDAO.getMainContact(userId);
         Profile profile = profileDAO.getMainProfile(userId, language, mainProfile);
-        profile.setMainContact(contact);
+        if (profile != null)
+        	profile.setMainContact(contact);
         return profile;
     }
     

@@ -32,16 +32,19 @@
     color: #777;
 }
 
-.experience header p {
+.experience header li {
+    display: inline;
     font-size: 0.8em;
-    margin-top: 5px;
     line-height: 0.7;
+    margin-right: 20px;
 }
 
-.experience header span {
-    font-size: 0.8em;
-    margin-top: 5px;
-    line-height: 0.7;
+@media only screen and (max-width: 500px) {
+    .experience header li {
+        display: block;
+        font-size: 0.9em;
+        padding-top: 10px;
+    }
 }
 
 .experience header img {

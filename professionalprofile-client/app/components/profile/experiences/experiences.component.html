@@ -1,5 +1,5 @@
-<h2>Experience</h2>
-<div class="move">
+<h2 *ngIf="experience != null">Experience</h2>
+<div class="move" *ngIf="experience != null">
     <a href="javascript:void(0)" (click)="getUserOlderExperience()" class="move-left"></a>
     <a href="javascript:void(0)" (click)="getUserNewerExperience()" class="move-right"></a>
     <article class="experience">
@@ -7,22 +7,28 @@
             <img class="img-rounded experience_company_img">
             <h2>{{ experience?.title }}</h2>
             <h3>{{ experience?.company.name }}</h3>
-            <span class="icon icon-calendar">
-                {{ experience?.initialDate | date: 'MM/yyyy' }} -
-                {{ experience?.finalDate | date: 'MM/yyyy' }}
-                <span *ngIf="experience?.years > 0">{{ experience?.years }}yr</span>
-                <span *ngIf="experience?.months > 0">{{ experience?.months }}mo</span> 
-            </span>
-            <span class="icon fa-map-marker icon-margin-left-15px">
-                {{ experience?.company.location.city }}, 
-                {{ experience?.company.location.region }}, 
-                {{ experience?.company.location.country }}
-            </span>
-            <span class="icon icon-link icon-margin-left-15px">
-                <a href="http://www.alpar.com.br" target="_blank">
-                    {{ experience?.company.website }}
-                </a>
-            </span>
+            <ul>
+                <li class="icon icon-calendar">
+                    {{ experience?.initialDate | date: 'MM/yyyy' }} -
+                    {{ experience?.finalDate | date: 'MM/yyyy' }} -
+                    <span *ngIf="experience?.years > 0">
+                        {{ experience?.years }}yr
+                    </span> 
+                    <span *ngIf="experience?.months > 0">
+                        {{ experience?.months }}mo
+                    </span> 
+                </li>
+                <li class="icon fa-map-marker">
+                    {{ experience?.company.location.city }}, 
+                    {{ experience?.company.location.region }}, 
+                    {{ experience?.company.location.country }}
+                </li>
+                <li class="icon icon-link">
+                    <a href="http://www.alpar.com.br" target="_blank">
+                        {{ experience?.company.website }}
+                    </a>
+                </li>
+            </ul>
         </header>
         <p>{{ experience?.description }}</p>
     </article>

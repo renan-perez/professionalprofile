@@ -1,23 +1,29 @@
-<h2>Education</h2>
+<h2 *ngIf="userEducation != null">Education</h2>
 <article class="education" *ngFor="let education of userEducation"> 
     <header>
         <h2>{{ education?.school }}</h2>
         <h3>{{ education?.course }}, {{ education?.fildOfStudy }}</h3>
-        <span class="icon icon-calendar">
-            {{ education?.initialDate | date: 'MM/yyyy' }} -
-            {{ education?.finalDate | date: 'MM/yyyy' }} -
-            <span *ngIf="education?.years > 0">{{ education?.years }}yr</span>
-            <span *ngIf="education?.months > 0">{{ education?.months }}mo</span> 
-        </span>
-        <span class="icon fa-map-marker icon-margin-left-15px">
-            {{ education?.location.city }}, 
-            {{ education?.location.region }}, 
-            {{ education?.location.country }}
-        </span>
-        <span class="icon icon-link icon-margin-left-15px">
-            <a href="http://www.alpar.com.br" target="_blank">
-            www.test.com.br
-            </a>
-        </span>
+        <ul>
+            <li class="icon icon-calendar">
+                {{ education?.initialDate | date: 'MM/yyyy' }} -
+                {{ education?.finalDate | date: 'MM/yyyy' }} -
+                <span *ngIf="education?.years > 0">
+                    {{ education?.years }}yr
+                </span>
+                <span *ngIf="education?.months > 0">
+                    {{ education?.months }}mo
+                </span> 
+            </li>
+            <li class="icon fa-map-marker">
+                {{ education?.location.city }}, 
+                {{ education?.location.region }}, 
+                {{ education?.location.country }}
+            </li>
+            <li class="icon icon-link">
+                <a href="http://www.alpar.com.br" target="_blank">
+                www.test.com.br
+                </a>
+            </li>
+        </ul>
     </header>
 </article>

@@ -27,24 +27,14 @@
     background-color: darkgrey;
     border: 4px solid crimson;
     box-shadow: 2px 2px 2px #AAA, inset 2px 2px 2px #AAA;
+    width: 18.750em; 
+    height: 18.750em;
 }
 
 .profile_header .main-information {
     height: 100%;
     width: 100%;
 }
-
-.profile_header .head-line {
-    font-family: 'Dosis', sans-serif;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 10px;
-    font-size: 2em;
-    color: #fff;
-    background-color: #5bc0de;
-}
-
 
 .profile_header .main_information header span {
     font-size: 0.8em;
@@ -58,14 +48,27 @@
     line-height: 1;
 }
 
-.profile_header .main-information .head-line::before {
-    content: "{ ";
+.profile_header .head-line {
+    font-family: 'Dosis', sans-serif;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    font-size: 2em;
     color: #fff;
+    background-color: #5bc0de;
 }
 
-.profile_header .main-information .head-line::after {
+.profile_header .main-information .head-line p::before {
+    content: "{ ";
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.profile_header .main-information .head-line p::after {
     content: " }";
     color: #fff;
+    font-size: 1.2em;
 }
 
 
@@ -152,6 +155,13 @@ section.profileItem:not(:last-child):after {
     display: inline;
 }
 
+@media only screen and (max-width: 400px) {
+    .look-me-up ul {
+        display: block;
+        margin-left: 5%;
+    }
+}
+
 .look-me-up ul li {
     display: inline;
 }
@@ -178,6 +188,7 @@ section.profileItem:not(:last-child):after {
     margin-right: 20px;
 }
 
+ /* speech-bubble */
 .open-code {
     float: right;
     position: fixed;
@@ -198,7 +209,7 @@ section.profileItem:not(:last-child):after {
   perspective: 1000px;
 }
 
-
+ /* speech-bubble */
 .speech-bubble {
     background-color: #f8f8f8;
     border: 1px solid #c8c8c8;
@@ -228,12 +239,19 @@ section.profileItem:not(:last-child):after {
     right: 30px;
 }
 
-.exit-speech {
+.speech-bubble p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.text-align-right {
+    text-align: right;
+    
+}
+
+.speech-bubble .exit-speech {
     color: #4682b4;
-    position: fixed;
-    bottom: 90px;
-    right: 10px;
-    font-size: 0.9em;
 }
 
 .speech-bubble a:link {
@@ -282,6 +300,6 @@ section.profileItem:not(:last-child):after {
     85% { -webkit-transform: translate(-3px, 0px) rotate(-2deg); }
 	90% { -webkit-transform: translate(2px, 2px) rotate(0deg); }
     95% { -webkit-transform: translate(2px, 1px) rotate(2deg); }
-	100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
+	100% { -webkit-transform: translate(0px, 0px) rotate(0deg); }
 }
 
