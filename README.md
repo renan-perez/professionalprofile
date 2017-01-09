@@ -17,5 +17,5 @@ The core is a REST API which is used to access the profile informations through 
 
 <strong>CLIENT</strong>
 <br>
-The client has been developed using Angular 2, HTML5 and CSS3.
+The client has been developed using Angular 2, HTML5, CSS3 and Bootstrap.
 
