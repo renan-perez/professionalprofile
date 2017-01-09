@@ -10,9 +10,10 @@ This project has been created to serve as a professional portfolio, so people ma
 
 The project consists in two modules:
 
-<strong>CORE</strong>
+><strong>CORE</strong>
 <br>
-The core is a REST API which is used to access the profile informations through its available endpoints. It has been developed using Java 8, Spring Framework, Habernate and Maven.
+> The core is a REST API which is used to access the profile informations through its available endpoints. It has been developed using Java 
+> 8, Spring Framework, Habernate and Maven.
 
 <strong>CLIENT</strong>
 <br>
