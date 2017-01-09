@@ -15,7 +15,8 @@ The project consists in two modules:
 > The core is a REST API which is used to access the profile informations through its available endpoints. It has been developed using Java 
 > 8, Spring Framework, Habernate and Maven.
 _
-<strong>CLIENT</strong>
+
+><strong>CLIENT</strong>
 ><br>
 >The client has been developed using Angular 2, HTML5 and CSS3.
 
