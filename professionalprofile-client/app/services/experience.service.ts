@@ -19,10 +19,7 @@ export class ExperienceService {
     constructor(private http: Http) {}
 
     getUserExperience(userId: Number, language: Language, initialDate: Date, age: Age) {
-        let url = `${this.userExperienceURL}/${userId}/${Language[language]}?age=${Age[age]}`;
-        if (initialDate != null) {
-            url = `${url}&initialDate=${initialDate}`;
-        }
+        const url = this.generateURL(this.userExperienceURL, userId, language, initialDate, age);
         
         console.log(url);
         console.log(url);
@@ -30,6 +27,24 @@ export class ExperienceService {
                 .get(url, { headers: this.getHeaders()})
                 .map(response => <Experience>response.json())
                 .catch(this.handleError);
+    }
+
+    private generateURL(mainURL: String, userId: Number, language: Language, initialDate: Date, age: Age) {
+        let url = `${mainURL}/${userId}?`;
+        
+        if (language != null && language != undefined) {
+            url += `language=${language}&`;
+        }
+
+        if (initialDate != null && initialDate != undefined) {
+            url += `initialDate=${initialDate}&`;
+        }
+
+        if (age != null && age != undefined) {
+            url += `age=${Age[age]}&`;
+        }
+
+        return url;
     }
 
     private getHeaders(): Headers {

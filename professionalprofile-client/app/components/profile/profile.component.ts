@@ -1,9 +1,12 @@
-import { Component, OnInit }   from '@angular/core';
+import { Component, OnInit }        from '@angular/core';
+import { ActivatedRoute, Params }   from '@angular/router';
+import { Location }                 from '@angular/common';
 
 import { ProfileService }   from '../../services/profile.service';
 import { ContactService }   from '../../services/contact.service';
 import { Profile }          from '../../models/profile';
-import { Contact }            from '../../models/contact';
+import { Contact }          from '../../models/contact';
+import { RouterUtil }       from '../../util/router-util';
 
 @Component({
     moduleId: module.id,
@@ -22,11 +25,13 @@ export class ProfileComponent implements OnInit {
 
     constructor(
         private profileService: ProfileService,
-        private contactService: ContactService
+        private contactService: ContactService,
+        private route: ActivatedRoute,
+        private location: Location,
     ) {}
 
     ngOnInit(): void {
-        this.userId = 1;
+        this.route.params.subscribe((param: any) => this.userId = param[RouterUtil.PARAM_USER_ID]);
         this.showBalloon = true;
         this.getMainInformation(this.userId);
         this.getUserPhoto(this.userId);

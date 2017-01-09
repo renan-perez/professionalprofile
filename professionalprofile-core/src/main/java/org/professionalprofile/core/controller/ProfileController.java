@@ -72,8 +72,8 @@ public class ProfileController {
         return null;
     }
     
-    @RequestMapping(value = "/listUserEducation/{userId}/{language}", method = RequestMethod.GET)
-    public List<Education> listUserEducation(@PathVariable Integer userId, @PathVariable Language language) {
+    @RequestMapping(value = "/listUserEducation/{userId}", method = RequestMethod.GET)
+    public List<Education> listUserEducation(@PathVariable Integer userId, Language language) {
     	try {
             return profileBusiness.listUserEducation(userId, language);
         } catch (SystemException e) {
@@ -82,11 +82,11 @@ public class ProfileController {
         return null;
     }
     
-    @RequestMapping(value = "/getExperience/{userId}/{language}", method = RequestMethod.GET)
-    public Experience getEducation(@PathVariable Integer userId, @PathVariable Language language, Age age, 
+    @RequestMapping(value = "/getExperience/{userId}", method = RequestMethod.GET)
+    public Experience getEducation(@PathVariable Integer userId, Language language, Age age, 
     			@RequestParam(name="initialDate", required=false) @DateTimeFormat(pattern = "yyyy,M,d") LocalDate inicialDate) {
     	try {
-            return profileBusiness.getExperience(inicialDate, age);
+            return profileBusiness.getExperience(userId, inicialDate, language, age);
         } catch (SystemException e) {
             e.printStackTrace();
         }

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.professionalprofile.core.enums.Age;
+import org.professionalprofile.core.enums.Language;
 import org.professionalprofile.core.exception.SystemException;
 import org.professionalprofile.core.model.Experience;
 import org.springframework.stereotype.Repository;
@@ -12,35 +13,41 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ExperienceDAO extends GenericDAO<Experience, Integer> {
 	
-	public Experience getExperience(final LocalDate inicialDate, final Age age) throws SystemException {
+	public Experience getExperience(final Integer userId, final LocalDate inicialDate, final Language langague, final Age age) throws SystemException {
 		switch (age) {
     	case OLDER:
-    		return this.getOlderExperience(inicialDate);
+    		return this.getOlderExperience(userId, inicialDate);
     	case OLDEST:
-    		return this.getOldestExperience();
+    		return this.getOldestExperience(userId);
     	case NEWER:
-    		return this.getNewerExperience(inicialDate);
+    		return this.getNewerExperience(userId, inicialDate);
 		default:
-			return this.getNewestExperience();
+			return this.getNewestExperience(userId);
 		}
 	}
 	
-	public Experience getNewestExperience() throws SystemException {
-		return super.getByNamedQuery("Experience.getNewestExperience", null, Experience.class);
+	public Experience getNewestExperience(final Integer userId) throws SystemException {
+		Map<String, Object> paramValueMap = new HashMap<>();
+        paramValueMap.put("userId", userId);
+		return super.getByNamedQuery("Experience.getNewestExperience", paramValueMap, Experience.class);
 	}
 	
-	public Experience getNewerExperience(final LocalDate inicialDate) throws SystemException {
+	public Experience getNewerExperience(final Integer userId, final LocalDate inicialDate) throws SystemException {
 		Map<String, Object> paramValueMap = new HashMap<>();
+		paramValueMap.put("userId", userId);
         paramValueMap.put("inicialDate", inicialDate);
 		return super.getByNamedQuery("Experience.getNewerExperience", paramValueMap, Experience.class);
 	}
 	
-	public Experience getOldestExperience() throws SystemException {
-		return super.getByNamedQuery("Experience.getOldestExperience", null, Experience.class);
+	public Experience getOldestExperience(final Integer userId) throws SystemException {
+		Map<String, Object> paramValueMap = new HashMap<>();
+        paramValueMap.put("userId", userId);
+		return super.getByNamedQuery("Experience.getOldestExperience", paramValueMap, Experience.class);
 	}
 	
-	public Experience getOlderExperience(final LocalDate inicialDate) throws SystemException {
+	public Experience getOlderExperience(final Integer userId, final LocalDate inicialDate) throws SystemException {
 		Map<String, Object> paramValueMap = new HashMap<>();
+		paramValueMap.put("userId", userId);
         paramValueMap.put("inicialDate", inicialDate);
 		return super.getByNamedQuery("Experience.getOlderExperience", paramValueMap, Experience.class);
 	}

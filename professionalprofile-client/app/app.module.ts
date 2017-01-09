@@ -2,6 +2,7 @@ import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms'
 import { HttpModule }     from '@angular/http';
+import { RouterModule }   from '@angular/router';
 
 import { AppComponent }         from './app.component';
 import { ProfileComponent }     from './components/profile/profile.component';
@@ -12,14 +13,17 @@ import { EducationComponent }   from './components/profile/education/education.c
 import { ProfileService }       from './services/profile.service';
 import { SkillService }         from './services/skills.service';
 import { EducationService }     from './services/education.service';
-import { ExperienceService }     from './services/experience.service';
-import { ContactService }     from './services/contact.service';
+import { ExperienceService }    from './services/experience.service';
+import { ContactService }       from './services/contact.service';
+
+import { AppRoutingModule }     from './app-routing.module';
 
 @NgModule({
   imports: [ 
     BrowserModule,
     FormsModule,
-    HttpModule 
+    HttpModule,
+    AppRoutingModule
   ],
   declarations: [ 
     AppComponent,

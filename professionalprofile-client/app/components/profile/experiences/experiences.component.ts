@@ -1,9 +1,14 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { ActivatedRoute, Params }               from '@angular/router';
+import { Location }                             from '@angular/common';
 
 import { ExperienceService }    from '../../../services/experience.service';
 import { Experience }           from '../../../models/experience';
 import { Language }             from '../../../enums/Language';
 import { Age }                  from '../../../enums/age';
+import { RouterUtil }           from '../../../util/router-util';
+
+import 'rxjs/add/operator/switchMap';
 
 @Component({
     moduleId: module.id,
@@ -15,14 +20,21 @@ import { Age }                  from '../../../enums/age';
 
 export class ExperiencesComponent implements OnInit {
 
+    userId: Number;
+    language: Language;
     experience: Experience;
 
     constructor(
-        private experienceService: ExperienceService
+        private experienceService: ExperienceService,
+        private route: ActivatedRoute
     ) {}
 
      ngOnInit(): void {
-        this.getUserExperience(1, Language.EN, null, Age.NEWEST);    
+        this.route.params.subscribe((param: any) => {
+            this.userId = param[RouterUtil.PARAM_USER_ID];
+            this.language = param[RouterUtil.PARAM_LANGUAGE];
+        });
+        this.getUserExperience(this.userId, this.language, null, Age.NEWEST);    
     }
 
     getUserExperience(userId: Number, language: Language, inicialDate: Date, age: Age) {

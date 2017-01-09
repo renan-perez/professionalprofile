@@ -18,7 +18,7 @@ export class EducationService {
     constructor(private http: Http) {}
 
     listUserEducation(userId: Number, language: Language) {
-        const url = `${this.userEducationURL}/${userId}/${Language[language]}`;
+        const url = this.generateURL(this.userEducationURL, userId, language);
         console.log(url);
         return this.http
                 .get(url, { headers: this.getHeaders()})
@@ -35,5 +35,13 @@ export class EducationService {
     private handleError(error: any): Promise<any> {
         console.log('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
+    }
+
+    private generateURL(mainURL: String, userId: Number, language: Language) {
+        let url = `${mainURL}/${userId}?`;
+        if (language != null && language != undefined) {
+            url += `language=${Language[language]}`;
+        }
+        return url;
     }
 }

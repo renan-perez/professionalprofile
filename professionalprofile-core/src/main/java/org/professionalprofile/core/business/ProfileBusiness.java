@@ -60,7 +60,10 @@ public class ProfileBusiness {
     	return skillsDAO.listUserSkills(userId);
     }
     
-    public List<Education> listUserEducation(final Integer userId, final Language language) throws SystemException {
+    public List<Education> listUserEducation(final Integer userId, Language language) throws SystemException {
+    	
+    	language = language == null ? this.getMainLanguage(userId) : language;
+    	
     	List<Education> userEducationList = educationDAO.listUserEducation(userId, language);
     	//Calculate period in years and months
     	userEducationList.forEach(education -> {
@@ -74,11 +77,14 @@ public class ProfileBusiness {
     	return contactDAO.listUserContactByType(userId, ContactType.listSocialNetworkTypes());
     }
     
-    public Experience getExperience(final LocalDate inicialDate, Age age) throws SystemException {
+    public Experience getExperience(final Integer userId, final LocalDate inicialDate, Language language, Age age) throws SystemException {
+    	
+    	language = language == null ? this.getMainLanguage(userId) : language;
+    	
     	Experience experience = null;
     	int tryNumber = 2;
     	do {
-    		experience = experienceDAO.getExperience(inicialDate, age);
+    		experience = experienceDAO.getExperience(userId, inicialDate, language, age);
     		
 	    	switch (age) {
 			case OLDER:
@@ -98,6 +104,10 @@ public class ProfileBusiness {
     	}
     	
     	return experience;
+    }
+    
+    private Language getMainLanguage(Integer userId) throws SystemException {
+    	return this.getMainInformation(userId, null).getId().getLanguage();
     }
 
 }
