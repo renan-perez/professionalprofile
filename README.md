@@ -1,6 +1,7 @@
 ## Professional Profile
 
-This project is a first version of a web based system which enables you create a profile with your professional history.
+This project is a web based system which enables you create a profile with your professional history.
+Access this link to see the first version of the system: http://renanperez.net/professionalprofile
 
 ## Motivation
 
